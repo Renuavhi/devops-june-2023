@@ -809,3 +809,16 @@ jegan@tektutor:~/devops-june-2023/Day1$ <b>docker ps</b>
 CONTAINER ID   IMAGE                                             COMMAND                  CREATED         STATUS         PORTS                                                           NAMES
 4e1a54fa5c5a   docker.bintray.io/jfrog/artifactory-oss:6.23.13   "/entrypoint-artifac…"   7 seconds ago   Up 6 seconds   0.0.0.0:8081-8082->8081-8082/tcp, :::8081-8082->8081-8082/tcp   jfrog
 </pre>
+
+Accessing JFrog Artifactory Web page from the RPS Lab machine web browser
+```
+http://localhost:8081
+```
+
+The login credentials are
+<pre>
+username - admin
+password - password
+</pre>
+
+You can change the password to Admin@123
