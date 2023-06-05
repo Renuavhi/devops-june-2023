@@ -609,6 +609,12 @@ surefire:test
 [INFO] ------------------------------------------------------------------------
 </pre>
 
+## Maven Life-cycle
+Maven supports 3 life-cyles
+1. default (23 Phases)
+2. clean ( 3 Phases )
+3. site ( 4 Phases )
+
 ## ⛹️‍♀️ Lab - Listing the Maven default life-cycle phases
 ```
 mvn help:describe -Dcmd=compile
