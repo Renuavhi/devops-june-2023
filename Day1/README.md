@@ -79,7 +79,7 @@ git clone https://github.com/tektutor/devops-june-2023.git
 cd devops-june-2023
 ```
 
-## Lab - Validate the hello pom.xml
+## ⛹️‍♂️ Lab - Validate the hello pom.xml
 ```
 cd ~/devops-june-2023
 git pull
@@ -104,7 +104,7 @@ Expected output
 [INFO] ------------------------------------------------------------------------
 </pre>
 
-## Lab - Compiling the Hello maven project
+## ⛹️‍♂️ Lab - Compiling the Hello maven project
 ```
 cd ~/devops-june-2023
 git pull
@@ -189,7 +189,7 @@ Downloaded from central: https://repo.maven.apache.org/maven2/commons-io/commons
 [INFO] ------------------------------------------------------------------------
 </pre>
 
-## Lab - Find maven plugin help details
+## ⛹️‍♂️ Lab - Find maven plugin help details
 ```
 mvn help:describe -Dplugin=org.apache.maven.plugins:maven-surefire-plugin:2.12.4 -Ddetail
 ```
@@ -606,7 +606,7 @@ surefire:test
 [INFO] ------------------------------------------------------------------------
 </pre>
 
-## Lab - Listing the Maven default life-cycle phases
+## ⛹️‍♀️ Lab - Listing the Maven default life-cycle phases
 ```
 mvn help:describe -Dcmd=compile
 ```
