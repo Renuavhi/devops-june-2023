@@ -718,7 +718,7 @@ jegan@tektutor:~/devops-june-2023/Day1/hello$ <b>mvn help:describe -Dcmd=site</b
 
 
 ## ⛹️‍♂️ Lab - Building C++ projects using Apache Maven
-The objective of this exercise, is to learn how to customize Maven life-cyle the way you wanted to build any programming language build.
+The objective of this exercise, is to learn how to customize Maven life-cycle the way you wanted to build any programming language build.
 
 ```
 cd ~/devops-june-2023
