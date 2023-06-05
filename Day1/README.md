@@ -71,3 +71,35 @@ Java version: 11.0.18, vendor: Red Hat, Inc., runtime: /usr/lib/jvm/java-11-open
 Default locale: en_US, platform encoding: UTF-8
 OS name: "linux", version: "4.18.0-425.10.1.el8_7.x86_64", arch: "amd64", family: "unix"
 </pre>
+
+## Cloning TekTutor Training Repository
+```
+cd ~
+git clone https://github.com/tektutor/devops-june-2023.git
+cd devops-june-2023
+```
+
+## Lab - Validate the hello pom.xml
+```
+cd ~/devops-june-2023
+git pull
+cd Day1/hello
+
+mvn validate
+```
+
+Expected output
+<pre>
+[jegan@tektutor.org hello]$ <b>mvn validate</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.tektutor:tektutor-hello-app >-------------------
+[INFO] Building tektutor-hello-app 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.032 s
+[INFO] Finished at: 2023-06-05T13:00:31+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
