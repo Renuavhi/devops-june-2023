@@ -666,7 +666,7 @@ It is a part of the lifecycle for the POM packaging 'jar'. This lifecycle includ
 [INFO] ------------------------------------------------------------------------
 </pre>
 
-## Listing the Maven clean life-cycle phases
+## ⛹️‍♀️ Lab - Listing the Maven clean life-cycle phases
 ```
 mvn help:describe -Dcmd=clean
 ```
@@ -687,7 +687,7 @@ jegan@tektutor:~/devops-june-2023/Day1/hello$ <b>mvn help:describe -Dcmd=clean</
 * post-clean: Not defined
 </pre>
 
-## Listing the Maven site life-cycle phases
+## ⛹️‍♀️ Lab - Listing the Maven site life-cycle phases
 ```
 mvn help:describe -Dcmd=site
 ```
@@ -717,7 +717,7 @@ jegan@tektutor:~/devops-june-2023/Day1/hello$ <b>mvn help:describe -Dcmd=site</b
 </pre>
 
 
-## Lab - Building C++ projects using Apache Maven
+## ⛹️‍♂️ Lab - Building C++ projects using Apache Maven
 The objective of this exercise, is to learn how to customize Maven life-cyle the way you wanted to build any programming language build.
 
 ```
