@@ -666,7 +666,7 @@ It is a part of the lifecycle for the POM packaging 'jar'. This lifecycle includ
 [INFO] ------------------------------------------------------------------------
 </pre>
 
-## Listing the Maven clean life-cycle phases
+## ⛹️‍♀️ Lab - Listing the Maven clean life-cycle phases
 ```
 mvn help:describe -Dcmd=clean
 ```
@@ -687,7 +687,7 @@ jegan@tektutor:~/devops-june-2023/Day1/hello$ <b>mvn help:describe -Dcmd=clean</
 * post-clean: Not defined
 </pre>
 
-## Listing the Maven site life-cycle phases
+## ⛹️‍♀️ Lab - Listing the Maven site life-cycle phases
 ```
 mvn help:describe -Dcmd=site
 ```
@@ -715,3 +715,124 @@ jegan@tektutor:~/devops-june-2023/Day1/hello$ <b>mvn help:describe -Dcmd=site</b
 [INFO] Finished at: 2023-06-05T15:18:12+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
+
+
+## ⛹️‍♂️ Lab - Building C++ projects using Apache Maven
+The objective of this exercise, is to learn how to customize Maven life-cycle the way you wanted to build any programming language build.
+
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day1/hello-cpp
+mvn compile
+mvn clean
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day1/hello-cpp$ <b>mvn compile</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.tektutor:hello-cpp-app >---------------------
+[INFO] Building hello-cpp-app 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hello-cpp-app ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/hello-cpp/src/main/resources
+[INFO] 
+[INFO] --- exec-maven-plugin:3.1.0:exec (custom-compile) @ hello-cpp-app ---
+mkdir -p bin
+g++ -c src/main.cpp -o bin/main.o
+mkdir -p bin
+g++ -c src/hello.cpp -o bin/hello.o
+g++ bin/main.o bin/hello.o -lstdc++ -o bin/hello.exe
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.035 s
+[INFO] Finished at: 2023-06-05T15:48:10+05:30
+[INFO] ------------------------------------------------------------------------
+jegan@tektutor:~/devops-june-2023/Day1/hello-cpp$ ls
+bin  Makefile  pom.xml  src
+
+jegan@tektutor:~/devops-june-2023/Day1/hello-cpp$ <b>mvn clean</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.tektutor:hello-cpp-app >---------------------
+[INFO] Building hello-cpp-app 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ hello-cpp-app ---
+[INFO] 
+[INFO] --- exec-maven-plugin:3.1.0:exec (custom-clean) @ hello-cpp-app ---
+rm -rf bin
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.280 s
+[INFO] Finished at: 2023-06-05T15:48:15+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
+
+## Lab - Setup JFrog Artifactory server as a Docker container
+```
+docker run -d --name jfrog --hostname jfrog -p 8081-8082:8081-8082 docker.bintray.io/jfrog/artifactory-oss:6.23.13
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day1$ <b>docker run -d --name jfrog --hostname jfrog -p 8081-8082:8081-8082 docker.bintray.io/jfrog/artifactory-oss:6.23.13</b>
+Unable to find image 'docker.bintray.io/jfrog/artifactory-oss:6.23.13' locally
+6.23.13: Pulling from jfrog/artifactory-oss
+22d07936ce3b: Pull complete 
+bfd6805b4758: Pull complete 
+cd4ca6bce587: Pull complete 
+c5900d68e237: Pull complete 
+bea70c1e086a: Pull complete 
+a2b826ae32ae: Pull complete 
+864a65e968fb: Pull complete 
+5cdcc76ff95c: Pull complete 
+2ff466ee83ec: Pull complete 
+a2e5c3c6b642: Pull complete 
+849558c1c102: Pull complete 
+4db55c686e9d: Pull complete 
+5c57ef5bb7f2: Pull complete 
+3ab13074178b: Pull complete 
+e204a7c82271: Pull complete 
+Digest: sha256:01604c310953da0feb1748ab0d83e90fa36516f3344187efa61f888f67b8ea98
+Status: Downloaded newer image for docker.bintray.io/jfrog/artifactory-oss:6.23.13
+4e1a54fa5c5ad67ba74b98f1b14901bc4951deaeec6529f0243182fc8d66e92e
+
+jegan@tektutor:~/devops-june-2023/Day1$ <b>docker ps</b>
+CONTAINER ID   IMAGE                                             COMMAND                  CREATED         STATUS         PORTS                                                           NAMES
+4e1a54fa5c5a   docker.bintray.io/jfrog/artifactory-oss:6.23.13   "/entrypoint-artifac…"   7 seconds ago   Up 6 seconds   0.0.0.0:8081-8082->8081-8082/tcp, :::8081-8082->8081-8082/tcp   jfrog
+</pre>
+
+Accessing JFrog Artifactory Web page from the RPS Lab machine web browser
+```
+http://localhost:8081
+```
+
+The login credentials are
+<pre>
+username - admin
+password - password
+</pre>
+
+You can change the password to Admin@123
+
+## Install Google chrome web browser on your RPS lab machine
+
+When it prompts for Admin password, type 'rps@12345' without quotes.
+
+```
+cd ~/Downloads
+ls
+scp rps@172.20.0.185:/home/rps/Downloads/*.rpm .
+sudo yum install -y ./google-chrome-stable_current_x86_64.rpm
+```
+
+Configuring the maven settings.xml file with the JFrog Artifactory Login credentials
+![JFrog](artifactory.png)
