@@ -54,3 +54,20 @@
     - 1 represents the major version
     - 2 represents the minor version
     - 3 represents the incremental version
+
+# Maven Commands
+
+## Finding the maven version
+```
+mvn --version
+```
+
+Expected output
+<pre>
+[jegan@tektutor.org devops-june-2023]$ <b>mvn --version</b>
+Apache Maven 3.6.3 (Red Hat 3.6.3-10.3)
+Maven home: /usr/share/maven
+Java version: 11.0.18, vendor: Red Hat, Inc., runtime: /usr/lib/jvm/java-11-openjdk-11.0.18.0.10-2.el8_7.x86_64
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "4.18.0-425.10.1.el8_7.x86_64", arch: "amd64", family: "unix"
+</pre>
