@@ -103,3 +103,54 @@ Expected output
 [INFO] Finished at: 2023-06-05T13:00:31+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
+
+## Lab - Compiling the Hello maven project
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day1/hello
+mvn compile
+```
+
+Expected output
+<pre>
+[jegan@tektutor.org hello]$ <b>mvn compile</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.tektutor:tektutor-hello-app >-------------------
+[INFO] Building tektutor-hello-app 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ tektutor-hello-app ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/hello/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ tektutor-hello-app ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-june-2023/Day1/hello/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] Source option 5 is no longer supported. Use 6 or later.
+[ERROR] Target option 1.5 is no longer supported. Use 1.6 or later.
+[INFO] 2 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.318 s
+[INFO] Finished at: 2023-06-05T13:01:21+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project tektutor-hello-app: Compilation failure: Compilation failure: 
+[ERROR] Source option 5 is no longer supported. Use 6 or later.
+[ERROR] Target option 1.5 is no longer supported. Use 1.6 or later.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+</pre>
