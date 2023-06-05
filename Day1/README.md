@@ -822,3 +822,10 @@ password - password
 </pre>
 
 You can change the password to Admin@123
+
+## Install Google chrome web browser on your RPS lab machine
+```
+cd ~/Downloads
+ls
+sudo yum install -y ./google-chrome-stable_current_x86_64.rpm
+```
