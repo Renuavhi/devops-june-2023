@@ -33,9 +33,11 @@
 ## What is Continuous Delivery (CD)?
 
 # Maven Overview
-- a build tool used in Java based project
+- a build tool used in Java based projects
 - this is an alternate tool for Apache Ant
 - an opensource tool from Apache Foundation
+- is programming agnostic/independent tool
+- however used mostly by Java based project
 - Supports Dependency Management
 - Maven has conventions for everything
   - has conventions on how to name your project
