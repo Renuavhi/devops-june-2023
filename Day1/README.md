@@ -659,3 +659,53 @@ It is a part of the lifecycle for the POM packaging 'jar'. This lifecycle includ
 [INFO] Finished at: 2023-06-05T15:06:08+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
+
+## Listing the Maven clean life-cycle phases
+```
+mvn help:describe -Dcmd=clean
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day1/hello$ <b>mvn help:describe -Dcmd=clean</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.tektutor:tektutor-hello-app >-------------------
+[INFO] Building tektutor-hello-app 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-help-plugin:3.4.0:describe (default-cli) @ tektutor-hello-app ---
+[INFO] 'clean' is a phase within the 'clean' lifecycle, which has the following phases: 
+* pre-clean: Not defined
+* clean: org.apache.maven.plugins:maven-clean-plugin:2.5:clean
+* post-clean: Not defined
+</pre>
+
+## Listing the Maven site life-cycle phases
+```
+mvn help:describe -Dcmd=site
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day1/hello$ <b>mvn help:describe -Dcmd=site</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.tektutor:tektutor-hello-app >-------------------
+[INFO] Building tektutor-hello-app 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-help-plugin:3.4.0:describe (default-cli) @ tektutor-hello-app ---
+[INFO] 'site' is a phase within the 'site' lifecycle, which has the following phases: 
+* pre-site: Not defined
+* site: org.apache.maven.plugins:maven-site-plugin:3.3:site
+* post-site: Not defined
+* site-deploy: org.apache.maven.plugins:maven-site-plugin:3.3:deploy
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.449 s
+[INFO] Finished at: 2023-06-05T15:18:12+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
