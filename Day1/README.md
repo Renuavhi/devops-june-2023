@@ -827,5 +827,6 @@ You can change the password to Admin@123
 ```
 cd ~/Downloads
 ls
+scp rps@172.20.0.185:/home/rps/Downloads/*.rpm .
 sudo yum install -y ./google-chrome-stable_current_x86_64.rpm
 ```
