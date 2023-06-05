@@ -775,3 +775,37 @@ rm -rf bin
 [INFO] Finished at: 2023-06-05T15:48:15+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
+
+## Lab - Setup JFrog Artifactory server as a Docker container
+```
+docker run -d --name jfrog --hostname jfrog -p 8081-8082:8081-8082 docker.bintray.io/jfrog/artifactory-oss:6.23.13
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day1$ <b>docker run -d --name jfrog --hostname jfrog -p 8081-8082:8081-8082 docker.bintray.io/jfrog/artifactory-oss:6.23.13</b>
+Unable to find image 'docker.bintray.io/jfrog/artifactory-oss:6.23.13' locally
+6.23.13: Pulling from jfrog/artifactory-oss
+22d07936ce3b: Pull complete 
+bfd6805b4758: Pull complete 
+cd4ca6bce587: Pull complete 
+c5900d68e237: Pull complete 
+bea70c1e086a: Pull complete 
+a2b826ae32ae: Pull complete 
+864a65e968fb: Pull complete 
+5cdcc76ff95c: Pull complete 
+2ff466ee83ec: Pull complete 
+a2e5c3c6b642: Pull complete 
+849558c1c102: Pull complete 
+4db55c686e9d: Pull complete 
+5c57ef5bb7f2: Pull complete 
+3ab13074178b: Pull complete 
+e204a7c82271: Pull complete 
+Digest: sha256:01604c310953da0feb1748ab0d83e90fa36516f3344187efa61f888f67b8ea98
+Status: Downloaded newer image for docker.bintray.io/jfrog/artifactory-oss:6.23.13
+4e1a54fa5c5ad67ba74b98f1b14901bc4951deaeec6529f0243182fc8d66e92e
+
+jegan@tektutor:~/devops-june-2023/Day1$ <b>docker ps</b>
+CONTAINER ID   IMAGE                                             COMMAND                  CREATED         STATUS         PORTS                                                           NAMES
+4e1a54fa5c5a   docker.bintray.io/jfrog/artifactory-oss:6.23.13   "/entrypoint-artifac…"   7 seconds ago   Up 6 seconds   0.0.0.0:8081-8082->8081-8082/tcp, :::8081-8082->8081-8082/tcp   jfrog
+</pre>
