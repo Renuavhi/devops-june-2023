@@ -55,6 +55,9 @@
     - 2 represents the minor version
     - 3 represents the incremental version
 
+## Maven High-Level Architecture
+![Maven High Level Architecture](MavenHighLevelArchitecture.png)
+
 # Maven Commands
 
 ## Finding the maven version
