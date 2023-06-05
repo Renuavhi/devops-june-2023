@@ -824,6 +824,9 @@ password - password
 You can change the password to Admin@123
 
 ## Install Google chrome web browser on your RPS lab machine
+
+When it prompts for Admin password, type 'rps@12345' without quotes.
+
 ```
 cd ~/Downloads
 ls
