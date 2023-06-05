@@ -838,3 +838,73 @@ Make sure you pom.xml is updated as
 
 Configuring the maven settings.xml file with the JFrog Artifactory Login credentials
 ![JFrog](artifactory.png)
+
+
+You may now deploy your application artifacts(pom and jar) to JFrog Artifactory as shown below
+```
+mvn deploy
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day1/hello$ <b>mvn deploy</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< org.tektutor:tektutor-hello-app >-------------------
+[INFO] Building tektutor-hello-app 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ tektutor-hello-app ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/hello/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ tektutor-hello-app ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ tektutor-hello-app ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/hello/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ tektutor-hello-app ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ tektutor-hello-app ---
+[INFO] Surefire report directory: /home/jegan/devops-june-2023/Day1/hello/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.AppTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.031 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 1
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ tektutor-hello-app ---
+[INFO] Building jar: /home/jegan/devops-june-2023/Day1/hello/target/tektutor-hello-app-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ tektutor-hello-app ---
+[INFO] Installing /home/jegan/devops-june-2023/Day1/hello/target/tektutor-hello-app-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/tektutor-hello-app/1.0.0/tektutor-hello-app-1.0.0.jar
+[INFO] Installing /home/jegan/devops-june-2023/Day1/hello/pom.xml to /home/jegan/.m2/repository/org/tektutor/tektutor-hello-app/1.0.0/tektutor-hello-app-1.0.0.pom
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ tektutor-hello-app ---
+Uploading to jfrog: http://localhost:8081/artifactory/tektutor/org/tektutor/tektutor-hello-app/1.0.0/tektutor-hello-app-1.0.0.jar
+Uploaded to jfrog: http://localhost:8081/artifactory/tektutor/org/tektutor/tektutor-hello-app/1.0.0/tektutor-hello-app-1.0.0.jar (2.2 kB at 7.2 kB/s)
+Uploading to jfrog: http://localhost:8081/artifactory/tektutor/org/tektutor/tektutor-hello-app/1.0.0/tektutor-hello-app-1.0.0.pom
+Uploaded to jfrog: http://localhost:8081/artifactory/tektutor/org/tektutor/tektutor-hello-app/1.0.0/tektutor-hello-app-1.0.0.pom (638 B at 7.6 kB/s)
+Downloading from jfrog: http://localhost:8081/artifactory/tektutor/org/tektutor/tektutor-hello-app/maven-metadata.xml
+Downloaded from jfrog: http://localhost:8081/artifactory/tektutor/org/tektutor/tektutor-hello-app/maven-metadata.xml (385 B at 5.5 kB/s)
+Uploading to jfrog: http://localhost:8081/artifactory/tektutor/org/tektutor/tektutor-hello-app/maven-metadata.xml
+Uploaded to jfrog: http://localhost:8081/artifactory/tektutor/org/tektutor/tektutor-hello-app/maven-metadata.xml (337 B at 7.2 kB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.892 s
+[INFO] Finished at: 2023-06-05T17:47:34+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
+
+You may verify, if your jar and pom files are uploaded to JFrog as shown below
+![jfrog](uploaded-files.png)
