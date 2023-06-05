@@ -155,7 +155,7 @@ Expected output
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
 </pre>
 
-The root cause of the above problem is that, my maven version i.e 3.6.3 makes use of maven-compiler-plugin version 3.1 which was release in year 2013.  Hence, the maven-compiler-plugin seems to restrict the java compiler feature set to JDK/JRE version 1.5.
+The root cause of the above problem is that, my maven version 3.6.3 makes use of maven-compiler-plugin version 3.1 which was released in year 2013.  Hence, the maven-compiler-plugin seems to restrict the java compiler feature set to JDK/JRE version 1.5.
 
 So we could solve the issue in two different ways.
 1. We could instruct the maven-compiler-plugin to use JDK/JRE( source and target compiler switches ) to 1.8.
