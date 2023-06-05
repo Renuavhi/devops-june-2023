@@ -833,6 +833,8 @@ ls
 scp rps@172.20.0.185:/home/rps/Downloads/*.rpm .
 sudo yum install -y ./google-chrome-stable_current_x86_64.rpm
 ```
+Make sure you pom.xml is updated as 
+![pom](pom.png)
 
 Configuring the maven settings.xml file with the JFrog Artifactory Login credentials
 ![JFrog](artifactory.png)
