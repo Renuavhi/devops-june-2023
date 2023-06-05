@@ -715,3 +715,63 @@ jegan@tektutor:~/devops-june-2023/Day1/hello$ <b>mvn help:describe -Dcmd=site</b
 [INFO] Finished at: 2023-06-05T15:18:12+05:30
 [INFO] ------------------------------------------------------------------------
 </pre>
+
+
+## Lab - Building C++ projects using Apache Maven
+The objective of this exercise, is to learn how to customize Maven life-cyle the way you wanted to build any programming language build.
+
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day1/hello-cpp
+mvn compile
+mvn clean
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day1/hello-cpp$ <b>mvn compile</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.tektutor:hello-cpp-app >---------------------
+[INFO] Building hello-cpp-app 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hello-cpp-app ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/hello-cpp/src/main/resources
+[INFO] 
+[INFO] --- exec-maven-plugin:3.1.0:exec (custom-compile) @ hello-cpp-app ---
+mkdir -p bin
+g++ -c src/main.cpp -o bin/main.o
+mkdir -p bin
+g++ -c src/hello.cpp -o bin/hello.o
+g++ bin/main.o bin/hello.o -lstdc++ -o bin/hello.exe
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.035 s
+[INFO] Finished at: 2023-06-05T15:48:10+05:30
+[INFO] ------------------------------------------------------------------------
+jegan@tektutor:~/devops-june-2023/Day1/hello-cpp$ ls
+bin  Makefile  pom.xml  src
+
+jegan@tektutor:~/devops-june-2023/Day1/hello-cpp$ <b>mvn clean</b>
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< org.tektutor:hello-cpp-app >---------------------
+[INFO] Building hello-cpp-app 1.0.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ hello-cpp-app ---
+[INFO] 
+[INFO] --- exec-maven-plugin:3.1.0:exec (custom-clean) @ hello-cpp-app ---
+rm -rf bin
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.280 s
+[INFO] Finished at: 2023-06-05T15:48:15+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
