@@ -384,6 +384,133 @@ SHOW TABLES;
 SELECT * FROM training;
 ```
 
+## Lab - Inspecting docker images 
+```
+docker image inspect nginx:latest
+```
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day2$ docker image inspect nginx:latest
+[
+    {
+        "Id": "sha256:f9c14fe76d502861ba0939bc3189e642c02e257f06f4c0214b1f8ca329326cda",
+        "RepoTags": [
+            "nginx:latest"
+        ],
+        "RepoDigests": [
+            "nginx@sha256:af296b188c7b7df99ba960ca614439c99cb7cf252ed7bbc23e90cfda59092305"
+        ],
+        "Parent": "",
+        "Comment": "",
+        "Created": "2023-05-24T22:43:48.18207587Z",
+        "Container": "23b0fce2f40be83daa129eacbf79b8a57c6524a7898bf3aba06e10c15b433d0d",
+        "ContainerConfig": {
+            "Hostname": "23b0fce2f40b",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.25.0",
+                "NJS_VERSION=0.7.12",
+                "PKG_RELEASE=1~bullseye"
+            ],
+            "Cmd": [
+                "/bin/sh",
+                "-c",
+                "#(nop) ",
+                "CMD [\"nginx\" \"-g\" \"daemon off;\"]"
+            ],
+            "Image": "sha256:a14a5803cbf095a0268663fe3235681c2f7fd5d0b59c242d99e7b1ebb59284f3",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "/docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>"
+            },
+            "StopSignal": "SIGQUIT"
+        },
+        "DockerVersion": "20.10.23",
+        "Author": "",
+        "Config": {
+            "Hostname": "",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NGINX_VERSION=1.25.0",
+                "NJS_VERSION=0.7.12",
+                "PKG_RELEASE=1~bullseye"
+            ],
+            "Cmd": [
+                "nginx",
+                "-g",
+                "daemon off;"
+            ],
+            "Image": "sha256:a14a5803cbf095a0268663fe3235681c2f7fd5d0b59c242d99e7b1ebb59284f3",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "/docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>"
+            },
+            "StopSignal": "SIGQUIT"
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 142560184,
+        "VirtualSize": 142560184,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/32e5484d05e2b12f6fd57ccd78fefcb0c453cb79a740183c41c8016c214b1ca4/diff:/var/lib/docker/overlay2/13a7227f7a6543785ffbd62f505eabe041db6b3e4809410ed5bef6cdc0be73da/diff:/var/lib/docker/overlay2/dd4be5c55d580c43f3e6307d381e9d8a5b24c3bdb37cda1e049862004d28bc75/diff:/var/lib/docker/overlay2/40f65b05ccb9b0d73b56e242739d68c182e0d88567b6624e762476abc970fa00/diff:/var/lib/docker/overlay2/2b821f24747675a8a5e557848496c6701c15de630dd5c3a83371042fedd11b95/diff",
+                "MergedDir": "/var/lib/docker/overlay2/a891d81076abf2d2f8c4ca19737bf2880c168f79ad091dbc973b8feceedb9634/merged",
+                "UpperDir": "/var/lib/docker/overlay2/a891d81076abf2d2f8c4ca19737bf2880c168f79ad091dbc973b8feceedb9634/diff",
+                "WorkDir": "/var/lib/docker/overlay2/a891d81076abf2d2f8c4ca19737bf2880c168f79ad091dbc973b8feceedb9634/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:8cbe4b54fa88d8fc0198ea0cc3a5432aea41573e6a0ee26eca8c79f9fbfa40e3",
+                "sha256:4b8862fe7056d8a3c2c0910eb38ebb8fc08785eaa1f9f53b2043bf7ca8adbafb",
+                "sha256:e60266289ce4a890aaf52b93228090998e28220aef04f128704141864992dd15",
+                "sha256:7daac92f43be84ad9675f94875c1a00357b975d6c58b11d17104e0a0e04da370",
+                "sha256:5e099cf3f3c83c449b8c062f944ac025c9bf2dd7ec255837c53430021f5a1517",
+                "sha256:4fd83434130318dede62defafcc5853d03dae8636eccfa1b9dcd385d92e3ff19"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "0001-01-01T00:00:00Z"
+        }
+    }
+]
+</pre>
+
+
 ## Lab - Setting up a load-balancer with nginx image and do port-forwarding on the lb container
 
 Let's delete all existing containers
