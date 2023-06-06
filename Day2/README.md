@@ -173,3 +173,29 @@ maven                                        3.6.3-jdk-11   e23b595c92ad   2 yea
 docker.bintray.io/jfrog/artifactory-oss      6.23.13        6106bdbbf79d   2 years ago   743MB
 k8s.gcr.io/pause                             3.1            da86e6ba6ca1   5 years ago   742kB
 </pre>
+
+## Lab - Deleting a docker image from Docker local registry
+```
+docker rmi hello-world:latest
+```
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker rmi hello-world:latest</b>
+Untagged: hello-world:latest
+Untagged: hello-world@sha256:fc6cf906cbfa013e80938cdf0bb199fbdbb86d6e3e013783e5a766f50f5dbce0
+Deleted: sha256:9c7a54a9a43cca047013b82af109fe963fde787f63f9e016fdc3384500c2823d
+Deleted: sha256:01bb4fce3eb1b56b05adf99504dafd31907a5aadac736e36b27595c8b92f07f1
+
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker images</b>
+REPOSITORY                                   TAG            IMAGE ID       CREATED       SIZE
+tektutor/java                                1.0            3dec350d1b8d   4 days ago    416MB
+tektutor/hello                               1.0            f0652e271e67   4 days ago    416MB
+localhost:5000/tektutor-ubuntu               22.04          8af846fe34ca   7 days ago    729MB
+bitnami/nginx                                latest         7a094f97a968   7 days ago    92.2MB
+registry                                     2              65f3b3441f04   3 weeks ago   24MB
+ubuntu                                       22.04          3b418d7b466a   5 weeks ago   77.8MB
+registry.access.redhat.com/ubi8/openjdk-11   latest         d1ce871371c2   6 weeks ago   394MB
+maven                                        3.6.3-jdk-11   e23b595c92ad   2 years ago   658MB
+docker.bintray.io/jfrog/artifactory-oss      6.23.13        6106bdbbf79d   2 years ago   743MB
+k8s.gcr.io/pause                             3.1            da86e6ba6ca1   5 years ago   742kB
+</pre>
