@@ -199,3 +199,23 @@ maven                                        3.6.3-jdk-11   e23b595c92ad   2 yea
 docker.bintray.io/jfrog/artifactory-oss      6.23.13        6106bdbbf79d   2 years ago   743MB
 k8s.gcr.io/pause                             3.1            da86e6ba6ca1   5 years ago   742kB
 </pre>
+
+## Lab - Create a container and run it in the background
+```
+docker run -dit --name ubuntu1 --hostname ubuntu1 ubuntu:22.04 /bin/bash
+```
+
+Once the start the container, you may list running containers and see if the ubuntu1 container is running
+```
+docker ps
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker run -dit --name ubuntu1 --hostname ubuntu1 ubuntu:22.04 /bin/bash</b>
+bc3c746dfb14e25f41da5f7716e2147bbd72ce4fc8074fe55d2cfa65fbb354cf
+
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker ps</b>
+CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS     NAMES
+bc3c746dfb14   ubuntu:22.04   "/bin/bash"   4 seconds ago   Up 3 seconds             ubuntu1
+</pre>
