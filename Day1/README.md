@@ -918,6 +918,226 @@ cd Day1/CRM
 mvn clean install
 ```
 
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day1/CRM$ mvn clean install
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] crm                                                                [pom]
+[INFO] dataaccesslayer                                                    [jar]
+[INFO] businesslayer                                                      [jar]
+[INFO] frontend                                                           [jar]
+[INFO] main                                                               [jar]
+[INFO] 
+[INFO] --------------------------< org.tektutor:crm >--------------------------
+[INFO] Building crm 1.0.0                                                 [1/5]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ crm ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ crm ---
+[INFO] Installing /home/jegan/devops-june-2023/Day1/CRM/pom.xml to /home/jegan/.m2/repository/org/tektutor/crm/1.0.0/crm-1.0.0.pom
+[INFO] 
+[INFO] --------------------< org.tektutor:dataaccesslayer >--------------------
+[INFO] Building dataaccesslayer 1.0.0                                     [2/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ dataaccesslayer ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ dataaccesslayer ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/CRM/dataaccesslayer/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ dataaccesslayer ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-june-2023/Day1/CRM/dataaccesslayer/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ dataaccesslayer ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/CRM/dataaccesslayer/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ dataaccesslayer ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-june-2023/Day1/CRM/dataaccesslayer/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ dataaccesslayer ---
+[INFO] Surefire report directory: /home/jegan/devops-june-2023/Day1/CRM/dataaccesslayer/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.DataAccessLayerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ dataaccesslayer ---
+[INFO] Building jar: /home/jegan/devops-june-2023/Day1/CRM/dataaccesslayer/target/dataaccesslayer-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ dataaccesslayer ---
+[INFO] Installing /home/jegan/devops-june-2023/Day1/CRM/dataaccesslayer/target/dataaccesslayer-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/dataaccesslayer/1.0.0/dataaccesslayer-1.0.0.jar
+[INFO] Installing /home/jegan/devops-june-2023/Day1/CRM/dataaccesslayer/pom.xml to /home/jegan/.m2/repository/org/tektutor/dataaccesslayer/1.0.0/dataaccesslayer-1.0.0.pom
+[INFO] 
+[INFO] ---------------------< org.tektutor:businesslayer >---------------------
+[INFO] Building businesslayer 1.0.0                                       [3/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ businesslayer ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ businesslayer ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/CRM/businesslayer/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ businesslayer ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-june-2023/Day1/CRM/businesslayer/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ businesslayer ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/CRM/businesslayer/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ businesslayer ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-june-2023/Day1/CRM/businesslayer/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ businesslayer ---
+[INFO] Surefire report directory: /home/jegan/devops-june-2023/Day1/CRM/businesslayer/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.BusinessLayerTest
+DataAccessLayer Module
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ businesslayer ---
+[INFO] Building jar: /home/jegan/devops-june-2023/Day1/CRM/businesslayer/target/businesslayer-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ businesslayer ---
+[INFO] Installing /home/jegan/devops-june-2023/Day1/CRM/businesslayer/target/businesslayer-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/businesslayer/1.0.0/businesslayer-1.0.0.jar
+[INFO] Installing /home/jegan/devops-june-2023/Day1/CRM/businesslayer/pom.xml to /home/jegan/.m2/repository/org/tektutor/businesslayer/1.0.0/businesslayer-1.0.0.pom
+[INFO] 
+[INFO] -----------------------< org.tektutor:frontend >------------------------
+[INFO] Building frontend 1.0.0                                            [4/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ frontend ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ frontend ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/CRM/frontend/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ frontend ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-june-2023/Day1/CRM/frontend/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ frontend ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/CRM/frontend/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ frontend ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-june-2023/Day1/CRM/frontend/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ frontend ---
+[INFO] Surefire report directory: /home/jegan/devops-june-2023/Day1/CRM/frontend/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.FrontendTest
+DataAccessLayer Module
+BusinessLayer Module
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.05 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ frontend ---
+[INFO] Building jar: /home/jegan/devops-june-2023/Day1/CRM/frontend/target/frontend-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ frontend ---
+[INFO] Installing /home/jegan/devops-june-2023/Day1/CRM/frontend/target/frontend-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/frontend/1.0.0/frontend-1.0.0.jar
+[INFO] Installing /home/jegan/devops-june-2023/Day1/CRM/frontend/pom.xml to /home/jegan/.m2/repository/org/tektutor/frontend/1.0.0/frontend-1.0.0.pom
+[INFO] 
+[INFO] -------------------------< org.tektutor:main >--------------------------
+[INFO] Building main 1.0.0                                                [5/5]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ main ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ main ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/CRM/main/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ main ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-june-2023/Day1/CRM/main/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ main ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/jegan/devops-june-2023/Day1/CRM/main/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ main ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to /home/jegan/devops-june-2023/Day1/CRM/main/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ main ---
+[INFO] Surefire report directory: /home/jegan/devops-june-2023/Day1/CRM/main/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.tektutor.MainTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 sec
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ main ---
+[INFO] Building jar: /home/jegan/devops-june-2023/Day1/CRM/main/target/main-1.0.0.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ main ---
+[INFO] Installing /home/jegan/devops-june-2023/Day1/CRM/main/target/main-1.0.0.jar to /home/jegan/.m2/repository/org/tektutor/main/1.0.0/main-1.0.0.jar
+[INFO] Installing /home/jegan/devops-june-2023/Day1/CRM/main/pom.xml to /home/jegan/.m2/repository/org/tektutor/main/1.0.0/main-1.0.0.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for crm 1.0.0:
+[INFO] 
+[INFO] crm ................................................ SUCCESS [  0.260 s]
+[INFO] dataaccesslayer .................................... SUCCESS [  1.338 s]
+[INFO] businesslayer ...................................... SUCCESS [  0.308 s]
+[INFO] frontend ........................................... SUCCESS [  0.275 s]
+[INFO] main ............................................... SUCCESS [  0.294 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.580 s
+[INFO] Finished at: 2023-06-06T11:07:47+05:30
+[INFO] ------------------------------------------------------------------------
+</pre>
+
 ## Lab - Understanding Effective POM
 Effective POM file showns all the inherited properties from its respective Parent POM and the grand parent i.e Super POM along with the details that we typed in the pom.xml.
 
@@ -927,7 +1147,7 @@ mvn help:effective-pom
 
 Expected output
 ```
-egan@tektutor:~/devops-june-2023/Day1/CRM/frontend$ <b>mvn help:effective-pom</b>
+jegan@tektutor:~/devops-june-2023/Day1/CRM/frontend$ <b>mvn help:effective-pom</b>
 [INFO] Scanning for projects...
 [INFO] 
 [INFO] -----------------------< org.tektutor:frontend >------------------------
