@@ -19,6 +19,19 @@
 - there are two types of Hypervisors
   1. Type 1 ( Used in Servers/Workstations - Bare-metal without OS)
   2. Type 2 ( Used in Wokstations/Desktops/Laptors - with a Host OS )
+- Examples of Hypervisor Softwares
+- VMWare
+  - Fusion ( Mac OS-X - Laptops/Desktops )
+  - Workstation ( Windows, Linux  - Laptops/Desktop)
+  - vSphere/vCenter ( Bare-metal Type 1 Hypervisor - Servers )
+- Microsoft
+  - Hyper-V ( Type 2  - Laptops/Desktops )
+- Parallels ( Mac OS-X  - Laptops/Desktops )
+- KVM ( Kernel Virtual Manager - Linux )
+- each OS that is installed on top on the Hypervisor is called Guest OS or Virtual Machines
+- Each Virtual machine(VM) gets its dedicated Hardware resources ( CPU Cores, RAM, Disk, Network Card[Virtual], Graphics Card[Virtual] )
+- As every VM requires dedicated Hardware resources, they are called heavy-weight Virtualization Technology
+- The number of VMs a Server/Destop/Workstation/Laptop can support is limited by number of CPU Cores the machine has, RAM, Disk, etc.,
 
 ## Hypervisor High Level Architecture
 
@@ -35,3 +48,32 @@
 ## Docker Registries
 
 ## Docker High Level Architecture
+
+
+# Docker Commands
+
+## Finding the docker version
+```
+docker --version
+```
+
+## Listing the docker images in the local docker registry
+```
+docker images
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker images</b>
+REPOSITORY                                   TAG            IMAGE ID       CREATED       SIZE
+tektutor/java                                1.0            3dec350d1b8d   4 days ago    416MB
+tektutor/hello                               1.0            f0652e271e67   4 days ago    416MB
+localhost:5000/tektutor-ubuntu               22.04          8af846fe34ca   7 days ago    729MB
+bitnami/nginx                                latest         7a094f97a968   7 days ago    92.2MB
+registry                                     2              65f3b3441f04   3 weeks ago   24MB
+ubuntu                                       22.04          3b418d7b466a   5 weeks ago   77.8MB
+registry.access.redhat.com/ubi8/openjdk-11   latest         d1ce871371c2   6 weeks ago   394MB
+maven                                        3.6.3-jdk-11   e23b595c92ad   2 years ago   658MB
+docker.bintray.io/jfrog/artifactory-oss      6.23.13        6106bdbbf79d   2 years ago   743MB
+k8s.gcr.io/pause                             3.1            da86e6ba6ca1   5 years ago   742kB
+</pre>
