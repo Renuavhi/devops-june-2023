@@ -34,7 +34,7 @@
 - The number of VMs a Server/Destop/Workstation/Laptop can support is limited by number of CPU Cores the machine has, RAM, Disk, etc.,
 
 ## Hypervisor High Level Architecture
-
+![Hypervisor](HypervisorHighLevelArchitecture.png)
 ## Hypevisor vs Container
 
 ## Docker Overview
