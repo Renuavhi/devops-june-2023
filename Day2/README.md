@@ -344,3 +344,42 @@ Bye
 bash-4.4# exit
 exit
 </pre>
+
+## Lab - Storing mysql database in an external volume
+```
+docker rm -f mysql
+mkdir -p /tmp/mysql
+docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD=root@123 -v /tmp/mysql:/var/lib/mysql mysql:latest
+```
+
+In the above run command, the path /tmp/mysql is on the local machine. While the path /var/lib/mysql is inside the container which acts like a mount point.
+
+Let's get inside the mysql container
+```
+docker exec -it mysql sh
+CREATE DATABASE tektutor;
+USE tektutor;
+CREATE TABLE training ( id INT NOT NULL, name VARCHAR(200), duration VARCHAR(200), PRIMARY KEY (id) );
+INSERT INTO training VALUES ( 1, "DevOps", "5 Days" );
+exit
+exit
+```
+
+Let delete the mysql container
+```
+docker rm -f mysql
+```
+
+Let's create a new mysql container
+```
+docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD=root@123 -v /tmp/mysql:/var/lib/mysql mysql:latest
+```
+
+Let's get inside the mysql container
+```
+docker exec -it mysql sh
+SHOW DATABASES;
+USE tektutor;
+SHOW TABLES;
+SELECT * FROM training;
+```
