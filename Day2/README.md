@@ -259,7 +259,7 @@ docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD mysql:latest
 
 Expected output
 <pre>
-jegan@tektutor:~/devops-june-2023/Day2$ <b>docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD mysql:latest</b>
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD=root@123 mysql:latest</b>
 Unable to find image 'mysql:latest' locally
 latest: Pulling from library/mysql
 3e0c3751e648: Pull complete 
