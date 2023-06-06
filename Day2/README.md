@@ -517,5 +517,12 @@ Assuming, 172.17.0.5 is the IP Address of your lb container. In case it is diffe
 
 In order to check if the port-forwarding is working fine.  Find your lab machine ip
 ```
-ifconfig
+ifconfig ens192
+```
+
+Then you can access the lb as shown below
+```
+http://172.20.0.144:8080
+http://172.20.0.144:8080
+http://172.20.0.144:8080
 ```
