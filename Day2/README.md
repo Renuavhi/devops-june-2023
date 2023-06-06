@@ -563,6 +563,11 @@ docker run -d --name nginx2 --hostname nginx2 nginx:latest
 docker run -d --name nginx3 --hostname nginx3 nginx:latest
 ```
 
+In case you have already a container with name lb, you need to delete it first
+```
+docker rm -f lb
+```
+
 Let's now create a 4th container, that we wish to configure to work like a load balancer
 ```
 docker run -d --name lb --hostname lb -p 8080:80 nginx:latest
