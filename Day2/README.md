@@ -250,3 +250,34 @@ jegan@tektutor:~/devops-june-2023/Day2$ <b>docker ps</b>
 CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS          PORTS     NAMES
 bc3c746dfb14   ubuntu:22.04   "/bin/bash"   31 minutes ago   Up 31 minutes             ubuntu1
 </pre>
+
+
+## Lab - Creating a mysql container and run it in background
+```
+docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD mysql:latest
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker run -d --name mysql --hostname mysql -e MYSQL_ROOT_PASSWORD mysql:latest</b>
+Unable to find image 'mysql:latest' locally
+latest: Pulling from library/mysql
+3e0c3751e648: Pull complete 
+7914193c6f0e: Pull complete 
+fe4b3f820487: Pull complete 
+63683b304e3d: Pull complete 
+6ad9069836bd: Pull complete 
+de90cd4c0e5d: Pull complete 
+892e565e2cf0: Pull complete 
+73057d123da0: Pull complete 
+af1a3c0ec34e: Pull complete 
+62fe8dc4ffe9: Pull complete 
+8807488ae889: Pull complete 
+Digest: sha256:4bae98614cd6ad1aecbdd32ff1b37b93fb0ee22b069469e7bc9679bacef1abd2
+Status: Downloaded newer image for mysql:latest
+d1a50ac156ffa43db82a2dcb79a63cfd309bcb4bf571d20093e1bc13be3ac4b5
+
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker ps</b>
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                 NAMES
+d1a50ac156ff   mysql:latest   "docker-entrypoint.s…"   4 seconds ago   Up 3 seconds   3306/tcp, 33060/tcp   mysql
+</pre>
