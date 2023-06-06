@@ -281,3 +281,68 @@ jegan@tektutor:~/devops-june-2023/Day2$ <b>docker ps</b>
 CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                 NAMES
 d1a50ac156ff   mysql:latest   "docker-entrypoint.s…"   4 seconds ago   Up 3 seconds   3306/tcp, 33060/tcp   mysql
 </pre>
+
+
+jegan@tektutor:~/devops-june-2023/Day2$ docker exec -it mysql /bin/bash
+bash-4.4# hostname
+bash: hostname: command not found
+bash-4.4# mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)
+
+mysql> CREATE DATABASE tektutor;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> USE tektutor;
+Database changed
+mysql> SHOW TABLES;
+Empty set (0.01 sec)
+
+mysql> CREATE TABLE training ( id INT NOT NULL, name VARCHAR(200), duration VARCHAR(200), PRIMARY KEY(id) );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> INSERT INTO training VALUES ( 1, "DevOps", "5 Days" );
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO training VALUES ( 2, "Microservices", "5 Days" );
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO training VALUES ( 3, "Red Hat OpenShift", "5 Days" );
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM training;
++----+-------------------+----------+
+| id | name              | duration |
++----+-------------------+----------+
+|  1 | DevOps            | 5 Days   |
+|  2 | Microservices     | 5 Days   |
+|  3 | Red Hat OpenShift | 5 Days   |
++----+-------------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> exit
+Bye
+bash-4.4# exit
+exit
+
