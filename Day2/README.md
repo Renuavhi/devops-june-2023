@@ -219,3 +219,34 @@ jegan@tektutor:~/devops-june-2023/Day2$ <b>docker ps</b>
 CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS     NAMES
 bc3c746dfb14   ubuntu:22.04   "/bin/bash"   4 seconds ago   Up 3 seconds             ubuntu1
 </pre>
+
+## Lab - Getting inside a container that runs in background
+```
+docker ps
+docker exec -it ubuntu1 /bin/bash
+hostname
+hostname -i
+exit
+```
+
+Expected output
+<pre>
+egan@tektutor:~/devops-june-2023/Day2$ <b>docker ps</b>
+CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS          PORTS     NAMES
+bc3c746dfb14   ubuntu:22.04   "/bin/bash"   28 minutes ago   Up 28 minutes             ubuntu1
+
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker exec -it ubuntu1 /bin/bash</b>
+root@ubuntu1:/# ls
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+root@ubuntu1:/# hostname
+ubuntu1
+root@ubuntu1:/# hostname -i
+172.17.0.2
+root@ubuntu1:/# exit
+exit
+
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker ps</b>
+CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS          PORTS     NAMES
+bc3c746dfb14   ubuntu:22.04   "/bin/bash"   31 minutes ago   Up 31 minutes             ubuntu1
+</pre>
