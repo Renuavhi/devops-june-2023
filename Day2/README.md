@@ -383,3 +383,139 @@ USE tektutor;
 SHOW TABLES;
 SELECT * FROM training;
 ```
+
+## Lab - Setting up a load-balancer with nginx image and do port-forwarding on the lb container
+
+Let's delete all existing containers
+```
+docker rm -f $(docker ps -aq)
+```
+
+Let's create 3 nginx container that we would use as a web server
+```
+docker run -d --name nginx1 --hostname nginx1 nginx:latest
+docker run -d --name nginx2 --hostname nginx2 nginx:latest
+docker run -d --name nginx3 --hostname nginx3 nginx:latest
+```
+
+Let's now create a 4th container, that we wish to configure to work like a load balancer
+```
+docker run -d --name lb --hostname lb nginx:latest
+```
+
+Let's list and see if all 4 containers are running
+```
+docker ps
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker ps</b>
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS     NAMES
+ba719422ef86   nginx:latest   "/docker-entrypoint.…"   16 minutes ago   Up 6 minutes    80/tcp    lb
+19840193f320   nginx:latest   "/docker-entrypoint.…"   16 minutes ago   Up 16 minutes   80/tcp    nginx3
+19adada80e33   nginx:latest   "/docker-entrypoint.…"   16 minutes ago   Up 16 minutes   80/tcp    nginx2
+60414edbf0ed   nginx:latest   "/docker-entrypoint.…"   17 minutes ago   Up 17 minutes   80/tcp    nginx1
+</pre>
+
+In order to configure lb container to work like Load Balancer, let's copy the nginx.conf file from lb container to local machine
+```
+docker cp lb:/etc/nginx/nginx.conf .
+ls
+```
+
+Now let's modify the nginx.conf as show below
+
+```
+
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    upstream backend {
+        server 172.17.0.2:80;
+        server 172.17.0.3:80;
+        server 172.17.0.4:80;
+    }
+    
+    server {
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}
+```
+
+In the above file, 172.17.0.2 is the IP Address of the nginx1 container, 172.17.0.3 is the IP Address of the nginx2 container and 172.17.0.4 is the IP address of the nginx3 container.
+
+In case, you wish to check your nginx container IPs, you may do so as shown below
+```
+docker inspect nginx1 | grep IPA
+docker inspect -f {{.NetworkSettings.IPAddress}} nginx2 
+docker inspect nginx3 | grep IPA
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker inspect nginx1 | grep IPA</b>
+            "SecondaryIPAddresses": null,
+            "IPAddress": "172.17.0.2",
+                    "IPAMConfig": null,
+                    "IPAddress": "172.17.0.2",
+
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker inspect -f {{.NetworkSettings.IPAddress}} nginx2</b>
+172.17.0.3
+
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker inspect nginx3 | grep IPA</b>
+            "SecondaryIPAddresses": null,
+            "IPAddress": "172.17.0.4",
+                    "IPAMConfig": null,
+                    "IPAddress": "172.17.0.4",
+</pre>
+
+Now, we need to copy the nginx.conf file back into the lb container
+```
+docker cp nginx.conf lb:/etc/nginx/nginx.conf
+```
+
+To appy the config changes, we need to restart the lb container
+```
+docker restart lb
+```
+
+Also, make sure your lb container is running after you made the config changes
+```
+docker ps
+```
+
+If all went well, you may customize the index.html file to report customized message, so that we can figure out from which nginx container the response is comming.
+
+```
+echo "Nginx Web Server 1" > index.html
+docker cp index.html nginx1:/usr/share/nginx/html/index.html
+
+echo "Nginx Web Server 2" > index.html
+docker cp index.html nginx2:/usr/share/nginx/html/index.html
+
+echo "Nginx Web Server 3" > index.html
+docker cp index.html nginx3:/usr/share/nginx/html/index.html
+```
+
+You my access your lb container IP from your RPS machine web browser
+```
+http://172.17.0.5
+```
+Assuming, 172.17.0.5 is the IP Address of your lb container. In case it is different, just try with your lb container IP.
+
+In order to check if the port-forwarding is working fine.  Find your lab machine ip
+```
+ifconfig
+```
