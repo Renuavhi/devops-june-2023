@@ -48,7 +48,7 @@
 ## Docker Registries
 
 ## Docker High Level Architecture
-![Docker High Level Architecture](Docker High Level Architecture.png)
+![Docker High Level Architecture](DockerHighLevelArchitecture.png)
 
 # Docker Commands
 
