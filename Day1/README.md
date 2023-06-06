@@ -926,7 +926,7 @@ mvn help:effective-pom
 ```
 
 Expected output
-<pre>
+```
 egan@tektutor:~/devops-june-2023/Day1/CRM/frontend$ <b>mvn help:effective-pom</b>
 [INFO] Scanning for projects...
 [INFO] 
@@ -1206,4 +1206,4 @@ Effective POMs, after inheritance, interpolation, and profiles are applied:
 [INFO] Total time:  0.628 s
 [INFO] Finished at: 2023-06-06T10:59:05+05:30
 [INFO] ------------------------------------------------------------------------
-</pre>
+```
