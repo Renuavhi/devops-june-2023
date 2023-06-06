@@ -63,6 +63,66 @@ jegan@tektutor:~/devops-june-2023/Day2$ <b>docker --version</b>
 Docker version 20.10.21, build 20.10.21-0ubuntu1~22.04.3
 </pre>
 
+## Finding details about your docker installation
+```
+docker info
+```
+
+Expected output
+<pre>
+egan@tektutor:~/devops-june-2023/Day2$ docker info
+Client:
+ Context:    default
+ Debug Mode: false
+
+Server:
+ Containers: 1
+  Running: 0
+  Paused: 0
+  Stopped: 1
+ Images: 14
+ Server Version: 20.10.21
+ Storage Driver: overlay2
+  Backing Filesystem: extfs
+  Supports d_type: true
+  Native Overlay Diff: true
+  userxattr: false
+ Logging Driver: json-file
+ Cgroup Driver: systemd
+ Cgroup Version: 2
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 io.containerd.runtime.v1.linux runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 
+ runc version: 
+ init version: 
+ Security Options:
+  apparmor
+  seccomp
+   Profile: default
+  cgroupns
+ Kernel Version: 5.19.0-43-generic
+ Operating System: Ubuntu 22.04.2 LTS
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 48
+ Total Memory: 125.5GiB
+ Name: tektutor
+ ID: WZA5:L6SA:D632:2LST:SLSS:TB3Y:AH7U:WLES:OL7T:G2TT:7TES:QLY2
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Registry: https://index.docker.io/v1/
+ Labels:
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+</pre>
 
 ## Listing the docker images in the local docker registry
 ```
