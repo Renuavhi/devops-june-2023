@@ -624,6 +624,11 @@ http {
 }
 ```
 
+You may check the official nginx web page to learn on how you could change the load-balancing algorithms at the below URL
+```
+https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/
+```
+
 In the above file, 172.17.0.2 is the IP Address of the nginx1 container, 172.17.0.3 is the IP Address of the nginx2 container and 172.17.0.4 is the IP address of the nginx3 container.
 
 In case, you wish to check your nginx container IPs, you may do so as shown below
