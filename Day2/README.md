@@ -565,7 +565,7 @@ docker run -d --name nginx3 --hostname nginx3 nginx:latest
 
 Let's now create a 4th container, that we wish to configure to work like a load balancer
 ```
-docker run -d --name lb --hostname lb nginx:latest
+docker run -d --name lb --hostname lb -p 8080:80 nginx:latest
 ```
 
 Let's list and see if all 4 containers are running
