@@ -549,6 +549,8 @@ ba719422ef86   nginx:latest   "/docker-entrypoint.…"   43 minutes ago   Up 32 
 
 ## Lab - Setting up a load-balancer with nginx image and do port-forwarding on the lb container
 
+![Load Balancer](lb.png)
+
 Let's delete all existing containers
 ```
 docker rm -f $(docker ps -aq)
