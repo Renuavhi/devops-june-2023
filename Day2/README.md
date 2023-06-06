@@ -510,6 +510,42 @@ jegan@tektutor:~/devops-june-2023/Day2$ docker image inspect nginx:latest
 ]
 </pre>
 
+## Lab - Creating container in interactive/foreground mode
+```
+docker run -it --name ubuntu1 --hostname ubuntu1 ubuntu:22.04 /bin/bash
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker run -it --name ubuntu1 --hostname ubuntu2 ubuntu:22.04 /bin/bash</b>
+
+root@ubuntu2:/# <b>hostname</b>
+ubuntu2
+
+root@ubuntu2:/# <b>hostname -i</b>
+172.17.0.6
+
+root@ubuntu2:/# <b>ls</b>
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@ubuntu2:/# <b>exit</b>
+exit
+
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker ps</b>
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS     NAMES
+ba719422ef86   nginx:latest   "/docker-entrypoint.…"   43 minutes ago   Up 32 minutes   80/tcp    lb
+19840193f320   nginx:latest   "/docker-entrypoint.…"   43 minutes ago   Up 43 minutes   80/tcp    nginx3
+19adada80e33   nginx:latest   "/docker-entrypoint.…"   43 minutes ago   Up 43 minutes   80/tcp    nginx2
+60414edbf0ed   nginx:latest   "/docker-entrypoint.…"   43 minutes ago   Up 43 minutes   80/tcp    nginx1
+
+jegan@tektutor:~/devops-june-2023/Day2$ <b>docker ps -a</b>
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS                      PORTS     NAMES
+85df1b51e762   ubuntu:22.04   "/bin/bash"              39 seconds ago   Exited (0) 11 seconds ago             ubuntu1
+ba719422ef86   nginx:latest   "/docker-entrypoint.…"   43 minutes ago   Up 32 minutes               80/tcp    lb
+19840193f320   nginx:latest   "/docker-entrypoint.…"   43 minutes ago   Up 43 minutes               80/tcp    nginx3
+19adada80e33   nginx:latest   "/docker-entrypoint.…"   43 minutes ago   Up 43 minutes               80/tcp    nginx2
+60414edbf0ed   nginx:latest   "/docker-entrypoint.…"   43 minutes ago   Up 43 minutes               80/tcp    nginx1
+</pre>
+
 
 ## Lab - Setting up a load-balancer with nginx image and do port-forwarding on the lb container
 
