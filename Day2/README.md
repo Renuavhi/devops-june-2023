@@ -280,8 +280,6 @@ d1a50ac156ffa43db82a2dcb79a63cfd309bcb4bf571d20093e1bc13be3ac4b5
 jegan@tektutor:~/devops-june-2023/Day2$ <b>docker ps</b>
 CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                 NAMES
 d1a50ac156ff   mysql:latest   "docker-entrypoint.s…"   4 seconds ago   Up 3 seconds   3306/tcp, 33060/tcp   mysql
-</pre>
-
 
 jegan@tektutor:~/devops-june-2023/Day2$ docker exec -it mysql /bin/bash
 bash-4.4# hostname
@@ -345,4 +343,4 @@ mysql> exit
 Bye
 bash-4.4# exit
 exit
-
+</pre>
