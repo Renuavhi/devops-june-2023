@@ -498,7 +498,7 @@ Successfully tagged tektutor/ansible-ubuntu-node:latest
 
 jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ <b>docker images</b>
 REPOSITORY                                   TAG            IMAGE ID       CREATED          SIZE
-tektutor/ansible-ubuntu-node                 latest         1463db4fb11c   16 seconds ago   220MB
+<b>tektutor/ansible-ubuntu-node                 latest         1463db4fb11c   16 seconds ago   220MB</b>
 mysql                                        latest         c71276df4a87   2 days ago       565MB
 tektutor/java                                1.0            3dec350d1b8d   5 days ago       416MB
 tektutor/hello                               1.0            f0652e271e67   5 days ago       416MB
