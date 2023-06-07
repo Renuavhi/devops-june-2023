@@ -495,5 +495,25 @@ Removing intermediate container e3a1c303f248
  ---> 1463db4fb11c
 Successfully built 1463db4fb11c
 Successfully tagged tektutor/ansible-ubuntu-node:latest
+
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ <b>docker images</b>
+REPOSITORY                                   TAG            IMAGE ID       CREATED          SIZE
+tektutor/ansible-ubuntu-node                 latest         1463db4fb11c   16 seconds ago   220MB
+mysql                                        latest         c71276df4a87   2 days ago       565MB
+tektutor/java                                1.0            3dec350d1b8d   5 days ago       416MB
+tektutor/hello                               1.0            f0652e271e67   5 days ago       416MB
+localhost:5000/tektutor-ubuntu               22.04          8af846fe34ca   8 days ago       729MB
+bitnami/nginx                                latest         7a094f97a968   8 days ago       92.2MB
+nginx                                        latest         f9c14fe76d50   13 days ago      143MB
+wordpress                                    latest         5174bdcbb532   2 weeks ago      616MB
+registry                                     2              65f3b3441f04   3 weeks ago      24MB
+ubuntu                                       22.04          3b418d7b466a   6 weeks ago      77.8MB
+registry.access.redhat.com/ubi8/openjdk-11   latest         d1ce871371c2   6 weeks ago      394MB
+mysql                                        5.7            dd6675b5cfea   7 weeks ago      569MB
+ubuntu                                       16.04          b6f507652425   21 months ago    135MB
+maven                                        3.6.3-jdk-11   e23b595c92ad   2 years ago      658MB
+docker.bintray.io/jfrog/artifactory-oss      6.23.13        6106bdbbf79d   2 years ago      743MB
+k8s.gcr.io/pause                             3.1            da86e6ba6ca1   5 years ago      742kB
 </pre>
+
 
