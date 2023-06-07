@@ -848,13 +848,14 @@ ansible -i inventory all -m ping
 
 Expected output
 <pre>
-jegan@tektutor:~/devops-june-2023/Day3/ansible$ cat inventory 
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ <b>cat inventory</b>
 [all]
 ubuntu1 ansible_user=root ansible_host=localhost ansible_port=2001 ansible_private_key_file=~/.ssh/id_rsa
 ubuntu2 ansible_user=root ansible_host=localhost ansible_port=2002 ansible_private_key_file=~/.ssh/id_rsa
 centos1 ansible_user=root ansible_host=localhost ansible_port=2003 ansible_private_key_file=~/.ssh/id_rsa
 centos2 ansible_user=root ansible_host=localhost ansible_port=2004 ansible_private_key_file=~/.ssh/id_rsa
-jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible -i inventory all -m ping
+
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ <b>ansible -i inventory all -m ping</b>
 ubuntu2 | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python3"
