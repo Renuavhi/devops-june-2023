@@ -10,7 +10,6 @@
 #
 # Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
 ##
-
 # Default server configuration
 #
 server {

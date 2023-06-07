@@ -1,0 +1,8 @@
+- name: This playbook demonstrates invoking Ansible Custom Module
+  hosts: all
+  tasks:
+  - name: Invoke hello custom module
+    hello: message="Hello Module"
+    register: output
+
+  - debug: var=output

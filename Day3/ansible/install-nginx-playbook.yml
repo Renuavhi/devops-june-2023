@@ -24,6 +24,11 @@
 
   - name: Configure nginx web server to point to our custom web root folder
     copy: src=default dest=/etc/nginx/sites-available/default
+    register: configuration_status
+
+  - debug: var=configuration_status
 
   - name: Restart nginx web server to apply the config changes
+    when: configuration_status.changed == True
     shell: service nginx restart
+
