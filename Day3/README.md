@@ -923,3 +923,23 @@ jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible -i inventory centos1 -m 
         "ansible_distribution_release": "Core",
         "ansible_distribution_version": "7.9",
 </pre>
+
+## Lab - Using Ansible shell module to execute shell commands on the ansible nodes from your ACM
+```
+ansible -i inventory all -m shell -a "hostname"
+ansible -i inventory all -m shell -a "hostname -i"
+ansible -i inventory all -m shell -a "uptime"
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible -i inventory all -m shell -a "hostname -i"
+ubuntu1 | CHANGED | rc=0 >>
+172.17.0.2
+ubuntu2 | CHANGED | rc=0 >>
+172.17.0.3
+centos1 | CHANGED | rc=0 >>
+172.17.0.4
+centos2 | CHANGED | rc=0 >>
+172.17.0.5
+</pre>
