@@ -23,3 +23,26 @@ Ansible strength is Configuration Management but Provisioning. Hence, we should 
 
 ## When Terraform can also perform configuration management, what is the motivation to use a configuration management tool like Ansible?
 Terraform's strenth is Provisioning, weakness is Configuration Management.  Terraform supports scripting languages to perform simple software installations, for complex software installations we shouldn't use Terraform. Ideally we should Configuration management tools, as they can easily handle very complex software installation and configurations all in a declarative way.
+
+## Ansible High Level Architecture
+
+# Ansible Commands
+
+## Finding ansible version
+```
+ansible --version
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/Desktop$ ansible --version
+ansible [core 2.15.0]
+  config file = None
+  configured module search path = ['/home/jegan/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /home/jegan/.local/lib/python3.10/site-packages/ansible
+  ansible collection location = /home/jegan/.ansible/collections:/usr/share/ansible/collections
+  executable location = /home/jegan/.local/bin/ansible
+  python version = 3.10.6 (main, Mar 10 2023, 10:55:28) [GCC 11.3.0] (/usr/bin/python3)
+  jinja version = 3.1.2
+  libyaml = True
+</pre>
