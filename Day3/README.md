@@ -1051,3 +1051,12 @@ ubuntu2                    : ok=3    changed=0    unreachable=0    failed=0    s
 </pre>
 
 
+## Lab - Using extra variable to an Ansible playbook
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day3/ansible
+ansible-playbook -i inventory -e greeting_msg="Welcome" install-nginx-playbook.yml
+```
+
