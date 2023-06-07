@@ -885,3 +885,8 @@ centos1 | SUCCESS => {
     "ping": "pong"
 }
 </pre>
+
+## Lab - Enabling the different levels of verbosity while running ansible ad-hoc commands
+```
+ansible -i inventory all -m ping -vvvv
+```
