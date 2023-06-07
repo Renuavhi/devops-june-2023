@@ -26,6 +26,20 @@ Terraform's strenth is Provisioning, weakness is Configuration Management.  Terr
 
 ## Ansible High Level Architecture
 
+## Ansible Overview
+- comes in 3 flavors
+  1. Ansile Core ( Open-source, supports only CLI )
+  2. AWX - Opensource product that supports Web Interface, built on top Ansible Core
+  3. Red Hat Ansible Tower ( Enterprise Edition built on top of opensource AWX, requires license, support backed by Red Hat - an IBM company )
+- is an opensource configuration management tool
+- developed in Python by Ansible Inc organization incorported by Michael Deehan
+- Michael Deehan was former employee of Red Hat
+- As Ansible gained traction, Red Hat acquired Ansible Inc, hence Ansible core and Ansible Tower are both Red Products
+- Ansible is agent-less, meaning we don't have to install any Ansible proprietary tools on the Ansible Node where software installation automation must be done
+- the machine where Ansible is installed is called Ansible Controller Machine(ACM), this can only be a Linux machine
+- On Unix/Linux/Mac based Ansible nodes, we must ensure Python and SSH Servers is installed
+- On Windows Ansible nodes, we must ensure Powershell and WinRm is installed
+
 # Ansible Commands
 
 ## Finding ansible version
@@ -46,3 +60,4 @@ ansible [core 2.15.0]
   jinja version = 3.1.2
   libyaml = True
 </pre>
+
