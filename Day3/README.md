@@ -106,11 +106,11 @@ docker images
 
 Expected output
 <pre>
-jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ cp /home/jegan/.ssh/id_rsa.pub authorized_keys
-jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ ls
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ <b>cp /home/jegan/.ssh/id_rsa.pub authorized_keys</b>
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ <b>ls</b>
 authorized_keys  Dockerfile
 
-jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ docker build -t tektutor/ansible-ubuntu-node:latest .
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ <b>docker build -t tektutor/ansible-ubuntu-node:latest .</b>
 Sending build context to Docker daemon  4.096kB
 Step 1/12 : FROM ubuntu:16.04
 16.04: Pulling from library/ubuntu
