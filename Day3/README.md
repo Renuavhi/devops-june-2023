@@ -767,3 +767,30 @@ maven                                        3.6.3-jdk-11   e23b595c92ad   2 yea
 docker.bintray.io/jfrog/artifactory-oss      6.23.13        6106bdbbf79d   2 years ago      743MB
 k8s.gcr.io/pause                             3.1            da86e6ba6ca1   5 years ago      742kB
 </pre>
+
+## Lab - Testing our custom image and see if we are able to login to the containers using key-pair login authentication
+```
+docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest
+docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest
+docker run -d --name centos1 --hostname centos1 -p 2003:22 -p 8003:80 tektutor/ansible-centos-node:latest
+docker run -d --name centos2 --hostname centos2 -p 2004:22 -p 8004:80 tektutor/ansible-centos-node:latest
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023$ docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu-node:latest 
+2d04a938eea24341b667370efd13c3bfecf9be7d80a1e6f69353cd1eeb319d9f
+jegan@tektutor:~/devops-june-2023$ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu-node:latest 
+1c8536e30e14ce66aa3a484387b92f2a637012916eaba439a05e3baae6827c38
+jegan@tektutor:~/devops-june-2023$ docker run -d --name centos1 --hostname centos1 -p 2003:22 -p 8003:80 tektutor/ansible-centos-node:latest 
+b22aeb7c307a3fd1a4cdcf4f1e765775adfc03d5565b8f2055f914212d8080b9
+jegan@tektutor:~/devops-june-2023$ docker run -d --name centos2 --hostname centos2 -p 2004:22 -p 8004:80 tektutor/ansible-centos-node:latest 
+c24244f1e6e2591274731e8ae4a0ba19e15d8c52201d8bd9d59409ba73e663a4
+
+jegan@tektutor:~/devops-june-2023$ docker ps
+CONTAINER ID   IMAGE                                 COMMAND               CREATED          STATUS          PORTS                                                                          NAMES
+c24244f1e6e2   tektutor/ansible-centos-node:latest   "/usr/sbin/sshd -D"   3 seconds ago    Up 2 seconds    0.0.0.0:2004->22/tcp, :::2004->22/tcp, 0.0.0.0:8004->80/tcp, :::8004->80/tcp   centos2
+b22aeb7c307a   tektutor/ansible-centos-node:latest   "/usr/sbin/sshd -D"   13 seconds ago   Up 12 seconds   0.0.0.0:2003->22/tcp, :::2003->22/tcp, 0.0.0.0:8003->80/tcp, :::8003->80/tcp   centos1
+1c8536e30e14   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   43 seconds ago   Up 43 seconds   0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
+2d04a938eea2   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   55 seconds ago   Up 55 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
+</pre>
