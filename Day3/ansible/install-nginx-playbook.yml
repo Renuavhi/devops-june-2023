@@ -2,7 +2,6 @@
   hosts: ubuntu
 
   vars:
-  - greeting_msg: Welcome to DevOps!
   - provisioner_tool: Docker
   - conf_mgr_tool: Ansible
 
@@ -31,4 +30,3 @@
   - name: Restart nginx web server to apply the config changes
     when: configuration_status.changed == True
     shell: service nginx restart
-

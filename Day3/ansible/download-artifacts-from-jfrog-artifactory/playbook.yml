@@ -1,0 +1,11 @@
+- name: This playbook will download the artifacts from JFrog Artifactory
+  hosts: localhost
+  tasks:
+  - name: Download jar from JFrog artifactory server
+    get_url:
+      url: http://localhost:8081/artifactory/tektutor/org/tektutor/tektutor-hello-app/1.0.0/tektutor-hello-app-1.0.0.jar 
+      dest: .
+      url_username: admin
+      url_password: Admin@123
+
+
