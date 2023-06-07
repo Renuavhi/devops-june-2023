@@ -945,10 +945,16 @@ centos2 | CHANGED | rc=0 >>
 </pre>
 
 ## Lab - Running your first Ansible Playbook
+```
+cd ~/devops-june-2023
+git pull
 
+cd Day3/ansible
+ansible-playbook -i inventory ping-playbook.yml 
+```
 
 <pre>
-jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible-playbook -i inventory ping-playbook.yml 
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ <b>ansible-playbook -i inventory ping-playbook.yml</b>
 
 PLAY [Ping Playbook] **********************************************************************************************************
 
