@@ -1060,3 +1060,12 @@ cd Day3/ansible
 ansible-playbook -i inventory -e greeting_msg="Welcome" install-nginx-playbook.yml
 ```
 
+## Downloading artifacts(jar) from JFrog Artifactory server using Ansible Playbook
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day3/ansible/download-artifacts-from-jfrog-artifactory
+ansible-playbook -i inventory playbook.yml
+```
+
