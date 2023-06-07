@@ -836,3 +836,51 @@ root@localhost's password:
 root@tektutor:~# exit
 logout
 </pre>
+
+## Lab - Executing Ansbile adhoc command - Ansible ping
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day3/ansible
+ansible -i inventory all -m ping
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ cat inventory 
+[all]
+ubuntu1 ansible_user=root ansible_host=localhost ansible_port=2001 ansible_private_key_file=~/.ssh/id_rsa
+ubuntu2 ansible_user=root ansible_host=localhost ansible_port=2002 ansible_private_key_file=~/.ssh/id_rsa
+centos1 ansible_user=root ansible_host=localhost ansible_port=2003 ansible_private_key_file=~/.ssh/id_rsa
+centos2 ansible_user=root ansible_host=localhost ansible_port=2004 ansible_private_key_file=~/.ssh/id_rsa
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible -i inventory all -m ping
+ubuntu2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+ubuntu1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+centos2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+centos1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+</pre>
