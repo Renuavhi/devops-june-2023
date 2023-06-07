@@ -1,0 +1,62 @@
+- name: This playbook will install nginx, configures web root folder and deploys a custom html page in Ubuntu and CentOS
+  hosts: all 
+
+  vars:
+  - greeting_msg: Welcome to DevOps!
+  - provisioner_tool: Docker
+  - conf_mgr_tool: Ansible
+
+  tasks:
+  - name: Install nginx in Ubuntu
+    when: ansible_distribution == "Ubuntu"
+    apt: name=nginx state=latest update_cache=yes
+
+  - name: Install Extra Package for Enterprise linux 
+    when: ansible_distribution == "CentOS"
+    yum: name=epel-release state=latest 
+
+  - name: Install nginx in CentOS 
+    when: ansible_distribution == "CentOS"
+    yum: name=nginx state=latest 
+
+  - name: Check if nginx server is already up and running
+    when: ansible_distribution == "CentOS"
+    shell: curl localhost
+    register: output
+    ignore_errors: true
+
+  - name: Start nginx web server to apply the config changes
+    when: ansible_distribution == "CentOS" and output.rc != 0
+    shell: /usr/sbin/nginx 
+
+  - name: Find IP address
+    shell: hostname -i
+    register: ipaddress
+
+  - debug: var=ipaddress
+
+  - name: Create the custom web root folder
+    file: path=/var/html state=directory mode=0755 
+
+  - name: Deploy the custom html web page
+    template: src=index.html.j2 dest=/var/html/index.html
+
+  - name: Configure nginx web server to point to our custom web root folder
+    when: ansible_distribution == "Ubuntu"
+    copy: src=default dest=/etc/nginx/sites-available/default
+    register: configuration_status
+
+  - name: Configure nginx web server to point to our custom web root folder
+    when: ansible_distribution == "CentOS"
+    copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+    register: configuration_status
+
+  - debug: var=configuration_status
+
+  - name: Restart nginx web server to apply the config changes
+    when: ansible_distribution == "Ubuntu" and configuration_status.changed == True
+    shell: service nginx restart
+
+  - name: Restart nginx web server to apply the config changes
+    when: ansible_distribution == "CentOS" and configuration_status.changed == True
+    shell: /usr/sbin/nginx -s reload 
