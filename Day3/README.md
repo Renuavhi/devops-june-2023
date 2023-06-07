@@ -797,7 +797,7 @@ b22aeb7c307a   tektutor/ansible-centos-node:latest   "/usr/sbin/sshd -D"   13 se
 
 You should be able to ssh into the containers without the need to type in the password
 <pre>
-jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ ssh -p 2001 root@localhost
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ <b>ssh -p 2001 root@localhost</b>
 Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-43-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -808,7 +808,7 @@ root@ubuntu1:~# exit
 logout
 Connection to localhost closed.
 
-jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ ssh -p 2002 root@localhost
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ <b>ssh -p 2002 root@localhost</b>
 Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-43-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -819,13 +819,13 @@ root@ubuntu2:~# exit
 logout
 Connection to localhost closed.
 
-jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ ssh -p 2003 root@localhost
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ <b>ssh -p 2003 root@localhost</b>
 Last login: Wed Jun  7 08:48:58 2023 from gateway
 [root@centos1 ~]# exit
 logout
 Connection to localhost closed.
 
-root@tektutor:~# ssh -p 2004 root@localhost
+root@tektutor:~# <b>ssh -p 2004 root@localhost</b>
 The authenticity of host '[localhost]:2004 ([127.0.0.1]:2004)' can't be established.
 RSA key fingerprint is SHA256:7BqFMLFlcBDPT1s12D+6s8FiLpo1+IYE0MqVv+XNcYQ.
 This key is not known by any other names
