@@ -836,3 +836,137 @@ root@localhost's password:
 root@tektutor:~# exit
 logout
 </pre>
+
+## Lab - Executing Ansbile adhoc command - Ansible ping
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day3/ansible
+ansible -i inventory all -m ping
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ <b>cat inventory</b>
+[all]
+ubuntu1 ansible_user=root ansible_host=localhost ansible_port=2001 ansible_private_key_file=~/.ssh/id_rsa
+ubuntu2 ansible_user=root ansible_host=localhost ansible_port=2002 ansible_private_key_file=~/.ssh/id_rsa
+centos1 ansible_user=root ansible_host=localhost ansible_port=2003 ansible_private_key_file=~/.ssh/id_rsa
+centos2 ansible_user=root ansible_host=localhost ansible_port=2004 ansible_private_key_file=~/.ssh/id_rsa
+
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ <b>ansible -i inventory all -m ping</b>
+ubuntu2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+ubuntu1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+centos2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+centos1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+</pre>
+
+## Lab - Enabling the different levels of verbosity while running ansible ad-hoc commands
+```
+ansible -i inventory all -m ping -vvvv
+```
+
+## Lab - Using ansible setup module to collect facts about your ansible nodes
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day3/ansible
+ansible -i inventory ubuntu1 -m setup | grep ansible_os_family
+ansible -i inventory ubuntu1 | grep ansible_distribution
+ansible -i inventory centos1 -m setup | grep ansible_distribution
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible -i inventory ubuntu1 -m setup | grep ansible_os_family
+        "ansible_os_family": "Debian",
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible -i inventory ubuntu1 -m setup | grep ansible_distribution
+        "ansible_distribution": "Ubuntu",
+        "ansible_distribution_file_parsed": true,
+        "ansible_distribution_file_path": "/etc/os-release",
+        "ansible_distribution_file_variety": "Debian",
+        "ansible_distribution_major_version": "16",
+        "ansible_distribution_release": "xenial",
+        "ansible_distribution_version": "16.04",
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible -i inventory centos1 -m setup | grep ansible_distribution
+        "ansible_distribution": "CentOS",
+        "ansible_distribution_file_parsed": true,
+        "ansible_distribution_file_path": "/etc/redhat-release",
+        "ansible_distribution_file_variety": "RedHat",
+        "ansible_distribution_major_version": "7",
+        "ansible_distribution_release": "Core",
+        "ansible_distribution_version": "7.9",
+</pre>
+
+## Lab - Using Ansible shell module to execute shell commands on the ansible nodes from your ACM
+```
+ansible -i inventory all -m shell -a "hostname"
+ansible -i inventory all -m shell -a "hostname -i"
+ansible -i inventory all -m shell -a "uptime"
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible -i inventory all -m shell -a "hostname -i"
+ubuntu1 | CHANGED | rc=0 >>
+172.17.0.2
+ubuntu2 | CHANGED | rc=0 >>
+172.17.0.3
+centos1 | CHANGED | rc=0 >>
+172.17.0.4
+centos2 | CHANGED | rc=0 >>
+172.17.0.5
+</pre>
+
+## Lab - Running your first Ansible Playbook
+
+
+<pre>
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible-playbook -i inventory ping-playbook.yml 
+
+PLAY [Ping Playbook] **********************************************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+ok: [centos1]
+ok: [centos2]
+
+TASK [Ping ansible node container] ********************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+ok: [centos1]
+ok: [centos2]
+
+PLAY RECAP ********************************************************************************************************************
+centos1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+centos2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+</pre>
