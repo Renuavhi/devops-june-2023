@@ -976,3 +976,87 @@ centos2                    : ok=2    changed=0    unreachable=0    failed=0    s
 ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ubuntu2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
 </pre>
+
+## Lab - Installing nginx using Ansible playbook
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day3/ansible
+ansible-playbook -i inventory install-nginx-playbook
+```
+
+## Lab - Developing Custom Ansible module and invoking it from an Ansible playbook
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day3/ansible/custom-module
+ansible-playbook -i inventory playbook.yml
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day3/ansible/custom-module$ ansible-playbook -i inventory playbook.yml 
+
+PLAY [This playbook demonstrates invoking Ansible Custom Module] **************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+ok: [centos2]
+ok: [centos1]
+
+TASK [Invoke hello custom module] *********************************************************************************************
+ok: [ubuntu1]
+ok: [ubuntu2]
+ok: [centos1]
+ok: [centos2]
+
+TASK [debug] ******************************************************************************************************************
+ok: [ubuntu1] => {
+    "output": {
+        "changed": false,
+        "failed": false,
+        "output": "Hello Custom Module message - Hello Module !"
+    }
+}
+ok: [ubuntu2] => {
+    "output": {
+        "changed": false,
+        "failed": false,
+        "output": "Hello Custom Module message - Hello Module !"
+    }
+}
+ok: [centos1] => {
+    "output": {
+        "changed": false,
+        "failed": false,
+        "output": "Hello Custom Module message - Hello Module !"
+    }
+}
+ok: [centos2] => {
+    "output": {
+        "changed": false,
+        "failed": false,
+        "output": "Hello Custom Module message - Hello Module !"
+    }
+}
+
+PLAY RECAP ********************************************************************************************************************
+centos1                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+centos2                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu1                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+</pre>
+
+
+## Lab - Using extra variable to an Ansible playbook
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day3/ansible
+ansible-playbook -i inventory -e greeting_msg="Welcome" install-nginx-playbook.yml
+```
+
