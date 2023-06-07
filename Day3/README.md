@@ -890,3 +890,36 @@ centos1 | SUCCESS => {
 ```
 ansible -i inventory all -m ping -vvvv
 ```
+
+## Lab - Using ansible setup module to collect facts about your ansible nodes
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day3/ansible
+ansible -i inventory ubuntu1 -m setup | grep ansible_os_family
+ansible -i inventory ubuntu1 | grep ansible_distribution
+ansible -i inventory centos1 -m setup | grep ansible_distribution
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible -i inventory ubuntu1 -m setup | grep ansible_os_family
+        "ansible_os_family": "Debian",
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible -i inventory ubuntu1 -m setup | grep ansible_distribution
+        "ansible_distribution": "Ubuntu",
+        "ansible_distribution_file_parsed": true,
+        "ansible_distribution_file_path": "/etc/os-release",
+        "ansible_distribution_file_variety": "Debian",
+        "ansible_distribution_major_version": "16",
+        "ansible_distribution_release": "xenial",
+        "ansible_distribution_version": "16.04",
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible -i inventory centos1 -m setup | grep ansible_distribution
+        "ansible_distribution": "CentOS",
+        "ansible_distribution_file_parsed": true,
+        "ansible_distribution_file_path": "/etc/redhat-release",
+        "ansible_distribution_file_variety": "RedHat",
+        "ansible_distribution_major_version": "7",
+        "ansible_distribution_release": "Core",
+        "ansible_distribution_version": "7.9",
+</pre>
