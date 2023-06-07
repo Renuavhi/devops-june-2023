@@ -794,3 +794,45 @@ b22aeb7c307a   tektutor/ansible-centos-node:latest   "/usr/sbin/sshd -D"   13 se
 1c8536e30e14   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   43 seconds ago   Up 43 seconds   0.0.0.0:2002->22/tcp, :::2002->22/tcp, 0.0.0.0:8002->80/tcp, :::8002->80/tcp   ubuntu2
 2d04a938eea2   tektutor/ansible-ubuntu-node:latest   "/usr/sbin/sshd -D"   55 seconds ago   Up 55 seconds   0.0.0.0:2001->22/tcp, :::2001->22/tcp, 0.0.0.0:8001->80/tcp, :::8001->80/tcp   ubuntu1
 </pre>
+
+You should be able to ssh into the containers without the need to type in the password
+<pre>
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ ssh -p 2001 root@localhost
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-43-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+Last login: Wed Jun  7 07:39:59 2023 from 172.17.0.1
+root@ubuntu1:~# exit
+logout
+Connection to localhost closed.
+
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ ssh -p 2002 root@localhost
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 5.19.0-43-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+Last login: Wed Jun  7 07:33:34 2023 from 172.17.0.1
+root@ubuntu2:~# exit
+logout
+Connection to localhost closed.
+
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/ubuntu$ ssh -p 2003 root@localhost
+Last login: Wed Jun  7 08:48:58 2023 from gateway
+[root@centos1 ~]# exit
+logout
+Connection to localhost closed.
+
+root@tektutor:~# ssh -p 2004 root@localhost
+The authenticity of host '[localhost]:2004 ([127.0.0.1]:2004)' can't be established.
+RSA key fingerprint is SHA256:7BqFMLFlcBDPT1s12D+6s8FiLpo1+IYE0MqVv+XNcYQ.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2004' (RSA) to the list of known hosts.
+root@localhost's password: 
+
+root@tektutor:~# exit
+logout
+</pre>
