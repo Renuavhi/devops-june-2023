@@ -943,3 +943,30 @@ centos1 | CHANGED | rc=0 >>
 centos2 | CHANGED | rc=0 >>
 172.17.0.5
 </pre>
+
+## Lab - Running your first Ansible Playbook
+
+
+<pre>
+jegan@tektutor:~/devops-june-2023/Day3/ansible$ ansible-playbook -i inventory ping-playbook.yml 
+
+PLAY [Ping Playbook] **********************************************************************************************************
+
+TASK [Gathering Facts] ********************************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+ok: [centos1]
+ok: [centos2]
+
+TASK [Ping ansible node container] ********************************************************************************************
+ok: [ubuntu2]
+ok: [ubuntu1]
+ok: [centos1]
+ok: [centos2]
+
+PLAY RECAP ********************************************************************************************************************
+centos1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+centos2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu1                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu2                    : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0 
+</pre>
