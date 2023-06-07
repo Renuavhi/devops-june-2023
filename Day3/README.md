@@ -516,4 +516,254 @@ docker.bintray.io/jfrog/artifactory-oss      6.23.13        6106bdbbf79d   2 yea
 k8s.gcr.io/pause                             3.1            da86e6ba6ca1   5 years ago      742kB
 </pre>
 
+## Lab - Creating a Custom CentOS ansible node image
+```
+cd ~/devops-june-2023
+git pull
 
+cd Day3/CustomDockerImagesForAnsibleNodes/centos
+cp ~/.ssh/id_rsa.pub authorized_keys
+
+docker build -t tektutor/ansible-centos-node:latest .
+```
+
+Expected output
+<pre>
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/centos$ <b>docker build -t tektutor/ansible-centos-node:latest .</b>
+Sending build context to Docker daemon  4.096kB
+Step 1/13 : FROM centos:centos7
+centos7: Pulling from library/centos
+2d473b07cdd5: Pull complete 
+Digest: sha256:be65f488b7764ad3638f236b7b515b3678369a5124c47b8d32916d6487418ea4
+Status: Downloaded newer image for centos:centos7
+ ---> eeb6ee3f44bd
+Step 2/13 : MAINTAINER Jeganathan Swaminathan <jegan@tektutor.org>
+ ---> Running in 9fd08e6da238
+Removing intermediate container 9fd08e6da238
+ ---> 3f5baca12e71
+Step 3/13 : RUN yum install -y which openssh-clients openssh-server python3
+ ---> Running in a0601917ae88
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+ * base: mirrors.nxtgen.com
+ * extras: mirrors.nxtgen.com
+ * updates: mirrors.nxtgen.com
+http://mirrors.nxtgen.com/centos-mirror/7.9.2009/os/x86_64/repodata/repomd.xml: [Errno 12] Timeout on http://mirrors.nxtgen.com/centos-mirror/7.9.2009/os/x86_64/repodata/repomd.xml: (28, 'Connection timed out after 30001 milliseconds')
+Trying other mirror.
+Resolving Dependencies
+--> Running transaction check
+---> Package openssh-clients.x86_64 0:7.4p1-22.el7_9 will be installed
+--> Processing Dependency: openssh = 7.4p1-22.el7_9 for package: openssh-clients-7.4p1-22.el7_9.x86_64
+--> Processing Dependency: fipscheck-lib(x86-64) >= 1.3.0 for package: openssh-clients-7.4p1-22.el7_9.x86_64
+--> Processing Dependency: libfipscheck.so.1()(64bit) for package: openssh-clients-7.4p1-22.el7_9.x86_64
+--> Processing Dependency: libedit.so.0()(64bit) for package: openssh-clients-7.4p1-22.el7_9.x86_64
+---> Package openssh-server.x86_64 0:7.4p1-22.el7_9 will be installed
+--> Processing Dependency: libwrap.so.0()(64bit) for package: openssh-server-7.4p1-22.el7_9.x86_64
+---> Package python3.x86_64 0:3.6.8-18.el7 will be installed
+--> Processing Dependency: python3-libs(x86-64) = 3.6.8-18.el7 for package: python3-3.6.8-18.el7.x86_64
+--> Processing Dependency: python3-setuptools for package: python3-3.6.8-18.el7.x86_64
+--> Processing Dependency: python3-pip for package: python3-3.6.8-18.el7.x86_64
+--> Processing Dependency: libpython3.6m.so.1.0()(64bit) for package: python3-3.6.8-18.el7.x86_64
+---> Package which.x86_64 0:2.20-7.el7 will be installed
+--> Running transaction check
+---> Package fipscheck-lib.x86_64 0:1.4.1-6.el7 will be installed
+--> Processing Dependency: /usr/bin/fipscheck for package: fipscheck-lib-1.4.1-6.el7.x86_64
+---> Package libedit.x86_64 0:3.0-12.20121213cvs.el7 will be installed
+---> Package openssh.x86_64 0:7.4p1-22.el7_9 will be installed
+---> Package python3-libs.x86_64 0:3.6.8-18.el7 will be installed
+--> Processing Dependency: libtirpc.so.1()(64bit) for package: python3-libs-3.6.8-18.el7.x86_64
+---> Package python3-pip.noarch 0:9.0.3-8.el7 will be installed
+---> Package python3-setuptools.noarch 0:39.2.0-10.el7 will be installed
+---> Package tcp_wrappers-libs.x86_64 0:7.6-77.el7 will be installed
+--> Running transaction check
+---> Package fipscheck.x86_64 0:1.4.1-6.el7 will be installed
+---> Package libtirpc.x86_64 0:0.2.4-0.16.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                Arch       Version                    Repository   Size
+================================================================================
+Installing:
+ openssh-clients        x86_64     7.4p1-22.el7_9             updates     655 k
+ openssh-server         x86_64     7.4p1-22.el7_9             updates     459 k
+ python3                x86_64     3.6.8-18.el7               updates      70 k
+ which                  x86_64     2.20-7.el7                 base         41 k
+Installing for dependencies:
+ fipscheck              x86_64     1.4.1-6.el7                base         21 k
+ fipscheck-lib          x86_64     1.4.1-6.el7                base         11 k
+ libedit                x86_64     3.0-12.20121213cvs.el7     base         92 k
+ libtirpc               x86_64     0.2.4-0.16.el7             base         89 k
+ openssh                x86_64     7.4p1-22.el7_9             updates     510 k
+ python3-libs           x86_64     3.6.8-18.el7               updates     6.9 M
+ python3-pip            noarch     9.0.3-8.el7                base        1.6 M
+ python3-setuptools     noarch     39.2.0-10.el7              base        629 k
+ tcp_wrappers-libs      x86_64     7.6-77.el7                 base         66 k
+
+Transaction Summary
+================================================================================
+Install  4 Packages (+9 Dependent packages)
+
+Total download size: 11 M
+Installed size: 53 M
+Downloading packages:
+warning: /var/cache/yum/x86_64/7/base/packages/fipscheck-lib-1.4.1-6.el7.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
+Public key for fipscheck-lib-1.4.1-6.el7.x86_64.rpm is not installed
+Public key for openssh-7.4p1-22.el7_9.x86_64.rpm is not installed
+--------------------------------------------------------------------------------
+Total                                              1.0 MB/s |  11 MB  00:11     
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Importing GPG key 0xF4A80EB5:
+ Userid     : "CentOS-7 Key (CentOS 7 Official Signing Key) <security@centos.org>"
+ Fingerprint: 6341 ab27 53d7 8a78 a7c2 7bb1 24c6 a8a7 f4a8 0eb5
+ Package    : centos-release-7-9.2009.0.el7.centos.x86_64 (@CentOS)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : fipscheck-1.4.1-6.el7.x86_64                                1/13 
+  Installing : fipscheck-lib-1.4.1-6.el7.x86_64                            2/13 
+  Installing : openssh-7.4p1-22.el7_9.x86_64                               3/13 
+  Installing : tcp_wrappers-libs-7.6-77.el7.x86_64                         4/13 
+  Installing : libedit-3.0-12.20121213cvs.el7.x86_64                       5/13 
+  Installing : libtirpc-0.2.4-0.16.el7.x86_64                              6/13 
+  Installing : python3-setuptools-39.2.0-10.el7.noarch                     7/13 
+  Installing : python3-pip-9.0.3-8.el7.noarch                              8/13 
+  Installing : python3-3.6.8-18.el7.x86_64                                 9/13 
+  Installing : python3-libs-3.6.8-18.el7.x86_64                           10/13 
+  Installing : openssh-clients-7.4p1-22.el7_9.x86_64                      11/13 
+  Installing : openssh-server-7.4p1-22.el7_9.x86_64                       12/13 
+  Installing : which-2.20-7.el7.x86_64                                    13/13 
+install-info: No such file or directory for /usr/share/info/which.info.gz
+  Verifying  : fipscheck-lib-1.4.1-6.el7.x86_64                            1/13 
+  Verifying  : libtirpc-0.2.4-0.16.el7.x86_64                              2/13 
+  Verifying  : python3-setuptools-39.2.0-10.el7.noarch                     3/13 
+  Verifying  : python3-libs-3.6.8-18.el7.x86_64                            4/13 
+  Verifying  : openssh-server-7.4p1-22.el7_9.x86_64                        5/13 
+  Verifying  : fipscheck-1.4.1-6.el7.x86_64                                6/13 
+  Verifying  : which-2.20-7.el7.x86_64                                     7/13 
+  Verifying  : libedit-3.0-12.20121213cvs.el7.x86_64                       8/13 
+  Verifying  : openssh-clients-7.4p1-22.el7_9.x86_64                       9/13 
+  Verifying  : tcp_wrappers-libs-7.6-77.el7.x86_64                        10/13 
+  Verifying  : python3-3.6.8-18.el7.x86_64                                11/13 
+  Verifying  : python3-pip-9.0.3-8.el7.noarch                             12/13 
+  Verifying  : openssh-7.4p1-22.el7_9.x86_64                              13/13 
+
+Installed:
+  openssh-clients.x86_64 0:7.4p1-22.el7_9                                       
+  openssh-server.x86_64 0:7.4p1-22.el7_9                                        
+  python3.x86_64 0:3.6.8-18.el7                                                 
+  which.x86_64 0:2.20-7.el7                                                     
+
+Dependency Installed:
+  fipscheck.x86_64 0:1.4.1-6.el7                                                
+  fipscheck-lib.x86_64 0:1.4.1-6.el7                                            
+  libedit.x86_64 0:3.0-12.20121213cvs.el7                                       
+  libtirpc.x86_64 0:0.2.4-0.16.el7                                              
+  openssh.x86_64 0:7.4p1-22.el7_9                                               
+  python3-libs.x86_64 0:3.6.8-18.el7                                            
+  python3-pip.noarch 0:9.0.3-8.el7                                              
+  python3-setuptools.noarch 0:39.2.0-10.el7                                     
+  tcp_wrappers-libs.x86_64 0:7.6-77.el7                                         
+
+Complete!
+Removing intermediate container a0601917ae88
+ ---> c595ca923583
+Step 4/13 : RUN ssh-keygen -f /etc/ssh/ssh_host_rsa_key
+ ---> Running in 68a53f9a531f
+Enter passphrase (empty for no passphrase): Enter same passphrase again: Generating public/private rsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_rsa_key.
+Your public key has been saved in /etc/ssh/ssh_host_rsa_key.pub.
+The key fingerprint is:
+SHA256:7BqFMLFlcBDPT1s12D+6s8FiLpo1+IYE0MqVv+XNcYQ root@68a53f9a531f
+The key's randomart image is:
++---[RSA 2048]----+
+|   .==+    +o    |
+|  . +O    E.o.   |
+| . ++.o . .. .   |
+|  o .o.=.o. . o  |
+|     ..+So o . . |
+|      o+. o..    |
+|     .o.+ o o.   |
+|      .*o+ .o.   |
+|      +o... .o   |
++----[SHA256]-----+
+Removing intermediate container 68a53f9a531f
+ ---> a34cdf78f144
+Step 5/13 : RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+ ---> Running in 12efcfb2c2fa
+Enter passphrase (empty for no passphrase): Enter same passphrase again: Generating public/private dsa key pair.
+Your identification has been saved in /etc/ssh/ssh_host_dsa_key.
+Your public key has been saved in /etc/ssh/ssh_host_dsa_key.pub.
+The key fingerprint is:
+SHA256:Knw7SzIpHAnfjbphcy/sFLzBhre3CPkHegXtqmaK4KU root@12efcfb2c2fa
+The key's randomart image is:
++---[DSA 1024]----+
+|                 |
+|                 |
+|.    .           |
+| o *.o.          |
+|  = Xo. S        |
+| . B.*o.         |
+|. X+@+=          |
+|+.*X=Xoo         |
+|oEo++o=o         |
++----[SHA256]-----+
+Removing intermediate container 12efcfb2c2fa
+ ---> b2fc6eeeb262
+Step 6/13 : RUN sed -i '/pam_loginuid.so/c session    optional     pam_loginuid.so'  /etc/pam.d/sshd
+ ---> Running in 3b871b63d2c5
+Removing intermediate container 3b871b63d2c5
+ ---> c8d25e9cedfc
+Step 7/13 : RUN echo 'root:root' | chpasswd
+ ---> Running in b67203f26d43
+Removing intermediate container b67203f26d43
+ ---> 68c1e8572f70
+Step 8/13 : RUN usermod -aG wheel root
+ ---> Running in d53de2f390d6
+Removing intermediate container d53de2f390d6
+ ---> 94d27858c6ff
+Step 9/13 : RUN mkdir -p /root/.ssh
+ ---> Running in 5ed259bd8eeb
+Removing intermediate container 5ed259bd8eeb
+ ---> 61601dca99ca
+Step 10/13 : COPY authorized_keys /root/.ssh/authorized_keys
+ ---> 5326572e7c8f
+Step 11/13 : EXPOSE 22
+ ---> Running in 21a9ba8bb1a3
+Removing intermediate container 21a9ba8bb1a3
+ ---> 14ddf2f60d7f
+Step 12/13 : EXPOSE 80
+ ---> Running in 7675d94b9e2d
+Removing intermediate container 7675d94b9e2d
+ ---> 497105840c0e
+Step 13/13 : ENTRYPOINT ["/usr/sbin/sshd", "-D"]
+ ---> Running in 9de48b4f87b1
+Removing intermediate container 9de48b4f87b1
+ ---> 4b5334077cdf
+Successfully built 4b5334077cdf
+Successfully tagged tektutor/ansible-centos-node:latest
+
+jegan@tektutor:~/devops-june-2023/Day3/CustomDockerImagesForAnsibleNodes/centos$ docker images
+REPOSITORY                                   TAG            IMAGE ID       CREATED          SIZE
+<b>tektutor/ansible-centos-node                 latest         4b5334077cdf   6 seconds ago    468MB
+tektutor/ansible-ubuntu-node                 latest         1463db4fb11c   31 minutes ago   220MB</b>
+mysql                                        latest         c71276df4a87   2 days ago       565MB
+tektutor/java                                1.0            3dec350d1b8d   5 days ago       416MB
+tektutor/hello                               1.0            f0652e271e67   5 days ago       416MB
+localhost:5000/tektutor-ubuntu               22.04          8af846fe34ca   8 days ago       729MB
+bitnami/nginx                                latest         7a094f97a968   8 days ago       92.2MB
+nginx                                        latest         f9c14fe76d50   13 days ago      143MB
+wordpress                                    latest         5174bdcbb532   2 weeks ago      616MB
+registry                                     2              65f3b3441f04   3 weeks ago      24MB
+ubuntu                                       22.04          3b418d7b466a   6 weeks ago      77.8MB
+registry.access.redhat.com/ubi8/openjdk-11   latest         d1ce871371c2   6 weeks ago      394MB
+mysql                                        5.7            dd6675b5cfea   7 weeks ago      569MB
+centos                                       centos7        eeb6ee3f44bd   20 months ago    204MB
+ubuntu                                       16.04          b6f507652425   21 months ago    135MB
+maven                                        3.6.3-jdk-11   e23b595c92ad   2 years ago      658MB
+docker.bintray.io/jfrog/artifactory-oss      6.23.13        6106bdbbf79d   2 years ago      743MB
+k8s.gcr.io/pause                             3.1            da86e6ba6ca1   5 years ago      742kB
+</pre>
