@@ -13,3 +13,8 @@
 - Bamboo
 - TeamCity
 - Microsoft TFS
+
+## Configure Jenkins Docker Plugin
+<pre>
+https://medium.com/tektutor/ci-cd-with-maven-github-docker-jenkins-aca28c252fec
+</pre>
