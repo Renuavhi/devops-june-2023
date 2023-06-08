@@ -12,8 +12,8 @@ pipeline {
      }
 
      stage ( "Stage 2 - compile" ) {
+	agent { label 'docker-slave-jenkins' }
 	steps {
-	   agent { label 'docker-slave-jenkins' }
 	   dir("Day5/CICD/CRM") {
 		sh "mvn compile"
            }
@@ -21,8 +21,8 @@ pipeline {
      }
 
      stage ( "Stage 3 - test" ) {
+	agent { label 'docker-slave-jenkins' }
 	steps {
-	   agent { label 'docker-slave-jenkins' }
 	   dir("Day5/CICD/CRM") {
 		sh "mvn test"
            }
@@ -30,8 +30,8 @@ pipeline {
      }
 
      stage ( "Stage 4 - package" ) {
+	agent { label 'docker-slave-jenkins' }
 	steps {
-	   agent { label 'docker-slave-jenkins' }
 	   dir("Day5/CICD/CRM") {
 		sh "mvn package"
            }
@@ -39,8 +39,8 @@ pipeline {
      }
 
      stage ( "Stage 5 - install" ) {
+	agent { label "docker-slave-jenkins" }
 	steps {
-	   agent { label "docker-slave-jenkins" }
 	   dir("Day5/CICD/CRM") {
 		sh "mvn install"
            }
