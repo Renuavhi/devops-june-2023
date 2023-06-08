@@ -1,0 +1,48 @@
+- name: This playbook will build a custom docker image that has JDK 18 and Maven 3
+  hosts: localhost
+  become: yes
+  
+  vars:
+  - image_names:
+    - tektutor/maven:latest
+
+  tasks:
+  - name: Delete all ansible node containers
+    shell: docker rm -f $(docker ps -aq --filter="name=ubuntu" --filter="name=centos")
+    ignore_errors: yes
+
+  - name: Install pip3 in Ubuntu
+    when: ansible_os_family == "Ubuntu"
+    apt: name=python3-pip state=latest
+
+  - name: Install pip3 in Fedora/CentOS/RHEL
+    when: ansible_os_family == "RedHat"
+    yum: name=python3-pip state=latest
+
+  - name: Install Docker Python SDK
+    shell: pip install docker-py
+
+  - name: Delete all ansible node images from local registry
+    docker_image:
+      name: "{{item}}"
+      state: absent
+    with_list: "{{image_names}}"
+    ignore_errors: yes
+
+  - name: copy the public key into current directory
+    copy: src=~/.ssh/id_rsa.pub dest=./authorized_keys
+
+  - name: Build ubuntu ansible node docker image
+    docker_image:
+      name: "{{item}}"
+      build:
+        dockerfile: Dockerfile
+        path: .
+        pull: no
+      state: present
+      source: build
+    with_list: "{{image_names}}"
+
+  - name: Delete the authorized_key file from current directory
+    shell: rm ./authorized_keys
+
