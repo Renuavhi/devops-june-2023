@@ -3,7 +3,7 @@ package org.tektutor;
 public class App {
 
 	public String sayHello() {
-		return "Hello Maven!";
+		return "Hello Maven!!";
 	}
 
 	public static void main ( String[] args ) {
