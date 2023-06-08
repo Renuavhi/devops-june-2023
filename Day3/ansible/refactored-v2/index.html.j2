@@ -1,0 +1,12 @@
+<html>
+	<head>
+		<title>{{ greeting_msg }}</title>
+	</head>
+	<body>
+		<h1>Nginx works!<h1>
+		<h1>Hostname - {{ansible_hostname}}<h1>
+		<h1>IP Address - {{ipaddress.stdout}}<h1>
+		<h1>Provisioned by {{provisioner_tool}}</h1>
+		<h1>Configured by {{conf_mgr_tool}}</h1>
+	</body>
+</html>

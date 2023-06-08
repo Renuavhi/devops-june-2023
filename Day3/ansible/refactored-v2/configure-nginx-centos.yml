@@ -1,0 +1,3 @@
+- name: Configure nginx web server to point to our custom web root folder
+  copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+  register: configuration_status

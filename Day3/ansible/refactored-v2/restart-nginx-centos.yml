@@ -1,0 +1,12 @@
+- name: Check if nginx server is already up and running
+  shell: curl localhost
+  register: output
+  ignore_errors: true
+
+- name: Start nginx web server to apply the config changes
+  when: output.rc != 0
+  shell: /usr/sbin/nginx 
+
+- name: Restart nginx web server to apply the config changes
+  when: configuration_status.changed == True
+  shell: /usr/sbin/nginx -s reload 
