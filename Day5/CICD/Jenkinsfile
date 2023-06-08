@@ -2,8 +2,8 @@ pipeline {
   agent none
 
   stages {
-     stage ( "Build Custom Docker Image using Ansible playbook" ) {
-	agent { label 'built-ini' }
+     stage ( "Stage 1 - Build Custom Docker Image using Ansible playbook" ) {
+	agent { label 'built-in' }
 	steps {
 	   dir("Day5/CICD") {
 		sh "ansible-playbook build-maven-docker-image-playbook.yml"
@@ -11,7 +11,7 @@ pipeline {
 	}
      }
 
-     stage () {
+     stage ( "Stage 2 - compile" ) {
 	steps {
 	   agent { label 'docker-slave-jenkins' }
 	   dir("Day5/CICD/CRM") {
@@ -20,7 +20,7 @@ pipeline {
 	}
      }
 
-     stage () {
+     stage ( "Stage 3 - test" ) {
 	steps {
 	   agent { label 'docker-slave-jenkins' }
 	   dir("Day5/CICD/CRM") {
@@ -29,7 +29,7 @@ pipeline {
 	}
      }
 
-     stage () {
+     stage ( "Stage 4 - package" ) {
 	steps {
 	   agent { label 'docker-slave-jenkins' }
 	   dir("Day5/CICD/CRM") {
@@ -38,7 +38,7 @@ pipeline {
 	}
      }
 
-     stage () {
+     stage ( "Stage 5 - install" ) {
 	steps {
 	   agent { "docker-slave-jenkins" }
 	   dir("Day5/CICD/CRM") {
@@ -46,8 +46,5 @@ pipeline {
            }
 	}
      }
-
-
   }
-
 }
