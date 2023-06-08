@@ -3,6 +3,7 @@ pipeline {
 
   stages {
      stage ( "Build Custom Docker Image using Ansible playbook" ) {
+	agent { built-in }
 	steps {
 	   dir("Day5/CICD") {
 		sh "ansible-playbook build-maven-docker-image-playbook.yml"
