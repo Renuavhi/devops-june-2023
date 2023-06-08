@@ -1,6 +1,5 @@
 - name: This playbook will build a custom docker image that has JDK 18 and Maven 3
   hosts: localhost
-  become: yes
   
   vars:
   - image_names:
