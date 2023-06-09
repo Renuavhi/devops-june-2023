@@ -10,9 +10,9 @@
     shell: docker rm -f $(docker ps -aq --filter="name=ubuntu" --filter="name=centos")
     ignore_errors: yes
 
-  - name: Install pip3 in Ubuntu
-    when: ansible_os_family == "Ubuntu"
-    apt: name=python3-pip state=latest
+#  - name: Install pip3 in Ubuntu
+#    when: ansible_os_family == "Ubuntu"
+#    apt: name=python3-pip state=latest
 
 #  - name: Install pip3 in Fedora/CentOS/RHEL
 #    when: ansible_os_family == "RedHat"
