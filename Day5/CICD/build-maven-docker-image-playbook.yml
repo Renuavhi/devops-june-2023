@@ -29,9 +29,6 @@
     with_list: "{{image_names}}"
     ignore_errors: yes
 
-  - name: copy the public key into current directory
-    copy: src=~/.ssh/id_rsa.pub dest=./authorized_keys
-
   - name: Build ubuntu ansible node docker image
     docker_image:
       name: "{{item}}"
@@ -42,7 +39,3 @@
       state: present
       source: build
     with_list: "{{image_names}}"
-
-  - name: Delete the authorized_key file from current directory
-    shell: rm ./authorized_keys
-
