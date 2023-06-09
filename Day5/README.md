@@ -493,3 +493,16 @@ https://digital.ai/products/release/
 ```
 ,
 You also need a license to run the XLR CI/CD Pipeline server.
+
+
+# Feedback and Post-test URL
+
+Appreciate if you can complete the feedback survey at the below URL
+<pre>
+https://tcheck.co/2Hldv3
+</pre>
+
+DevOps - Post test link for DevOps training.
+<pre>
+https://app.mymapit.in/code4/tiny/dfahoe
+</pre>
