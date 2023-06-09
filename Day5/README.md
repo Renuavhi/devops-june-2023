@@ -484,3 +484,12 @@ exit
 
 For official documentation about liquibase, you may check here
 https://docs.liquibase.com/faq.html
+
+## Digial AI - XL Release 
+
+You may download the XLR Server as a zip file from their official website.  
+```
+https://digital.ai/products/release/
+```
+,
+You also need a license to run the XLR CI/CD Pipeline server.
