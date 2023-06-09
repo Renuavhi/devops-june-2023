@@ -23,6 +23,7 @@ https://medium.com/tektutor/ci-cd-with-maven-github-docker-jenkins-aca28c252fec
 ```
 sudo yum install -y python3-pip
 sudo pip3 install pybuilder
+sudo pip3 install coverage
 ```
 
 ## Running the python build 
