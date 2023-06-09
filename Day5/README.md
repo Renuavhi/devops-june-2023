@@ -68,3 +68,10 @@ root	ALL=(ALL:ALL) ALL
 
 @includedir /etc/sudoers.d
 </pre>
+
+## Jenkins Docker Agent Template configuration
+Navigate to Jenkins Dashboard --> Manage Jenkins --> Nodes and Cloud --> Clouds --> Docker Agent Templates
+You need to ensure the label is docker-slave-jenkins also the Pull Strategy should be Never.
+
+Once the above changes are done, please save.
+
