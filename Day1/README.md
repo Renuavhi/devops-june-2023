@@ -27,10 +27,13 @@
   - Infrastructure as a Code Tools (Terraform, Cloudformation, etc.,)
 
 ## What is Continuous Integration (CI)?
-
-## What is Continuous Deployment (CD)?
+Continuous integration (CI) is a process that automates the integration of code changes from multiple developers in a single software project. The CI Build server monitors source code version control system, such as Git (or Github, BitBucket, and many others) or TFS Version Control, coupled with automated processes for code quality tests, syntax style review tools, and more. These processes can be triggered when new code is merged or committed to a shared code repository, thus the name “Continuous Integration.”
 
 ## What is Continuous Delivery (CD)?
+Continuous Delivery, every code change is built, tested, and then pushed to a non-production testing or staging environment. There can be multiple, parallel test stages before a production deployment.
+
+## What is Continuous Deployment (CD)?
+Continuous Deployment (CD) is a process that automates testing to validate if code changes are correct, stable and deployable. If so, in a literal CD context, code is automatically deployed to production as soon as these conditions are met.
 
 # Maven Overview
 - a build tool used in Java based projects
