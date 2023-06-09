@@ -20,7 +20,7 @@
     yum: name=python-pip state=latest
 
   - name: Install Docker Python SDK
-    shell: pip install docker
+    shell: pip3 install docker
 
   - name: Delete all ansible node images from local registry
     docker_image:
