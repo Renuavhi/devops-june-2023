@@ -7,6 +7,11 @@ sudo pip3 install docker-py
 ```
 
 Edit your /etc/sudoers file and add the below entry for rps user to give root permission
+```
+sudo vim /etc/sudoers
+```
+
+Make sure you give root permission to the rps user as shown below
 <pre>
 # This file MUST be edited with the 'visudo' command as root.
 #
@@ -51,7 +56,7 @@ Defaults	use_pty
 
 # User privilege specification
 root	ALL=(ALL:ALL) ALL
-rps   ALL=(ALL) NOPASSWD:ALL
+<b>rps   ALL=(ALL) NOPASSWD:ALL</b>
 
 # Members of the admin group may gain root privileges
 %admin ALL=(ALL) ALL
