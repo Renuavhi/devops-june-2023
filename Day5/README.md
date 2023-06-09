@@ -1517,6 +1517,9 @@ Second: de.schlichtherle.truezip.fs.nio.file.TempFilePoolService[priority=100]
 2023-06-09 16:49:35.434 [main] {activemq.broker=embedded-broker} INFO  c.x.x.s.jetty.JettyServerListener - You can now point your browser to http://tektutor:5516/
 </pre>
 
+You may now access your XLR web page from Chrome web browser 
+![XLR](xlr-licence-scr.png)
+
 You also need a license to run the XLR CI/CD Pipeline server.
 
 
