@@ -1522,6 +1522,17 @@ You may now access your XLR web page from Chrome web browser
 
 You also need a license to run the XLR CI/CD Pipeline server.
 
+The other option to try out XLR is
+<pre>
+https://hub.docker.com/r/xebialabs/xl-release/
+</pre>
+
+You may create the XLR container as shown below
+<pre>
+docker run -e "ADMIN_PASSWORD=desired-admin-password" -e "ACCEPT_EULA=Y" -p 5516:5516 --name xlr xebialabs/xl-release:22.2
+</pre>
+
+
 
 # Feedback and Post-test URL
 
