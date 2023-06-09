@@ -481,3 +481,6 @@ Bye
 bash-4.4# exit
 exit
 </pre>
+
+For official documentation about liquibase, you may check here
+https://docs.liquibase.com/faq.html
