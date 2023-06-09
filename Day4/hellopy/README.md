@@ -18,3 +18,18 @@
 <pre>
 https://medium.com/tektutor/ci-cd-with-maven-github-docker-jenkins-aca28c252fec
 </pre>
+
+## Install Python builder
+```
+sudo yum install -y python3-pip
+sudo pip3 install pybuilder
+```
+
+## Running the python build 
+```
+cd ~/devops-june-2023
+git pull
+
+cd Day4/hellopy
+pyb
+```
