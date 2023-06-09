@@ -1,1 +1,77 @@
 # Day 5
+
+## Pre-requites to run the CI/CD pipeline using Jenkinsfile
+```
+sudo yum install -y python3-pip
+sudo pip3 install docker-py
+```
+
+Edit your /etc/sudoers file and add the below entry for rps user to give root permission
+```
+sudo vim /etc/sudoers
+```
+
+Make sure you give root permission to the rps user as shown below
+<pre>
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+Defaults	use_pty
+
+# This preserves proxy settings from user environments of root
+# equivalent users (group sudo)
+#Defaults:%sudo env_keep += "http_proxy https_proxy ftp_proxy all_proxy no_proxy"
+
+# This allows running arbitrary commands, but so does ALL, and it means
+# different sudoers have their choice of editor respected.
+#Defaults:%sudo env_keep += "EDITOR"
+
+# Completely harmless preservation of a user preference.
+#Defaults:%sudo env_keep += "GREP_COLOR"
+
+# While you shouldn't normally run git as root, you need to with etckeeper
+#Defaults:%sudo env_keep += "GIT_AUTHOR_* GIT_COMMITTER_*"
+
+# Per-user preferences; root won't have sensible values for them.
+#Defaults:%sudo env_keep += "EMAIL DEBEMAIL DEBFULLNAME"
+
+# "sudo scp" or "sudo rsync" should be able to use your SSH agent.
+#Defaults:%sudo env_keep += "SSH_AGENT_PID SSH_AUTH_SOCK"
+
+# Ditto for GPG agent
+#Defaults:%sudo env_keep += "GPG_AGENT_INFO"
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root	ALL=(ALL:ALL) ALL
+<b>rps   ALL=(ALL) NOPASSWD:ALL</b>
+
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo	ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "@include" directives:
+
+@includedir /etc/sudoers.d
+</pre>
+
+## Jenkins Docker Agent Template configuration
+Navigate to Jenkins Dashboard --> Manage Jenkins --> Nodes and Cloud --> Clouds --> Docker Agent Templates
+You need to ensure the label is docker-slave-jenkins also the Pull Strategy should be Never.
+
+Once the above changes are done, please save.
+

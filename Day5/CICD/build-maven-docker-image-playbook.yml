@@ -1,5 +1,6 @@
 - name: This playbook will build a custom docker image that has JDK 18 and Maven 3
   hosts: localhost
+  become: yes
   
   vars:
   - image_names:
@@ -14,12 +15,12 @@
     when: ansible_os_family == "Ubuntu"
     apt: name=python3-pip state=latest
 
-  - name: Install pip3 in Fedora/CentOS/RHEL
-    when: ansible_os_family == "RedHat"
-    yum: name=python3-pip state=latest
+#  - name: Install pip3 in Fedora/CentOS/RHEL
+#    when: ansible_os_family == "RedHat"
+#    yum: name=python3-pip state=latest
 
-  - name: Install Docker Python SDK
-    shell: pip install docker-py
+#  - name: Install Docker Python SDK
+#    shell: pip3 install docker
 
   - name: Delete all ansible node images from local registry
     docker_image:
