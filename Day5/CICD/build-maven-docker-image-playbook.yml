@@ -17,7 +17,7 @@
 
   - name: Install pip3 in Fedora/CentOS/RHEL
     when: ansible_os_family == "RedHat"
-    yum: name=python-pip state=latest
+    yum: name=python3-pip state=latest
 
   - name: Install Docker Python SDK
     shell: pip3 install docker
