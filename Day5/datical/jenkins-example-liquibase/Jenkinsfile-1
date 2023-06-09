@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    dockerContainer { image 'liquibase/liquibase:4.4.2' }
+    label 'datical-liquibase' 
   }
   stages {
     stage('Test') {
